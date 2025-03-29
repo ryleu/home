@@ -14,6 +14,7 @@
       grimblast
       wofi
       phinger-cursors
+      papirus-icon-theme
 
       # fonts
       fira-code-nerdfont
@@ -52,6 +53,10 @@
       #   org.gradle.console=verbose
       #   org.gradle.daemon.idletimeout=3600000
       # '';
+
+      ".config/uswm/env".text = ''
+        EDITOR = "vim"
+      '';
     };
 
     # Home Manager can also manage your environment variables through
@@ -74,6 +79,8 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = true;
+
     settings = {
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor = [
@@ -324,6 +331,17 @@
   }; # end wayland.windowManager.hyprland
 
   gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "phinger-cursors-light";
+      size = 24;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+    };
+  };
+
+  qt = {
     enable = true;
   };
 
