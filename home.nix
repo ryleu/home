@@ -1,6 +1,17 @@
 { config, pkgs, ... }:
 
-{
+let
+  monoFont = "FiraCode Nerd Font";
+  fontFeatures = [
+    "liga"
+    "calt"
+    "cv01"
+    "cv02"
+    "cv04"
+    "ss01"
+    "ss06"
+  ];
+in {
   home = {
     username = "ryleu";
     homeDirectory = "/home/ryleu";
@@ -86,7 +97,7 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/
 
       # Set programs that you use
-      "$terminal" = "ghostty";
+      "$terminal" = "kitty";
       "$fileManager" = "nautilus";
       "$menu" = "wofi --show drun";
 
@@ -341,6 +352,18 @@
   };
 
   programs = {
+    kitty = {
+      enable = true;
+      font = {
+        name = monoFont;
+        size = 13;
+      };
+      settings = {
+        disable_ligatures = "cursor";
+        font_family = "family=\"${monoFont}\" features=\"" + (builtins.concatStringsSep " +" fontFeatures) + "\"";
+      };
+    };
+
     ghostty = {
       enable = true;
       enableBashIntegration = true;
@@ -348,17 +371,9 @@
         font-size = 13;
         font-family = [
           ""
-          "FiraCode Nerd Font"
+          monoFont
         ];
-        font-feature = [
-          "liga"
-          "calt"
-          "cv01"
-          "cv02"
-          "cv04"
-          "ss01"
-          "ss06"
-        ];
+        font-feature = fontFeatures;
       };
     };
 
