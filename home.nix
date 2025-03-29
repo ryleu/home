@@ -53,10 +53,6 @@
       #   org.gradle.console=verbose
       #   org.gradle.daemon.idletimeout=3600000
       # '';
-
-      ".config/uswm/env".text = ''
-        EDITOR = "vim"
-      '';
     };
 
     # Home Manager can also manage your environment variables through
@@ -384,6 +380,7 @@
           email = "69326171+ryleu@users.noreply.github.com";
           name = "ryleu";
         };
+        core.editor = "vim";
         init.defaultBranch = "main";
       };
     };
@@ -391,6 +388,7 @@
     bash = {
       enable = true;
       bashrcExtra = ''
+        export EDITOR="vim"
       '';
     };
 
