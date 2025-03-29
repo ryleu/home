@@ -37,7 +37,6 @@
       brave
       zed-editor
       vesktop
-      (callPackage ./zen.nix {})
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
