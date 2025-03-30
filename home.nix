@@ -27,6 +27,7 @@ in {
       phinger-cursors
       papirus-icon-theme
       networkmanagerapplet
+      mako
 
       # fonts
       fira-code-nerdfont
@@ -42,6 +43,7 @@ in {
       cargo
       rustc
       rustfmt
+      nix-search
 
       # apps
       spotify
@@ -106,6 +108,7 @@ in {
       exec-once = [
         "nm-applet &"
         "waybar &"
+        "systemctl start --user makoctl &"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
@@ -246,18 +249,20 @@ in {
       "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
 
       # See https://wiki.hyprland.org/Configuring/Binds/ for more
-      bind = let genKeybinds = n:
+      bind = let genKeybinds = n: # n will go 1 -> 10
         if n > 10 then [ ]
         else let
-          key = toString n;
-          num = if key == 0 then "10"
-          else key;
-        in [
+          # for each of those 1 -> 10 we need to figure out the corresponding workspace and key
+          workspace = toString n;
+          # the workspace is just toString n, but we need key 0 to map to workspace 10
+          key = if workspace == "10" then "0"
+          else workspace;
+        in [ # now for the actual keybinds
           # Switch workspaces with mainMod + [0-9]
-          "\$mainMod, ${key}, workspace, ${num}"
+          "\$mainMod, ${key}, workspace, ${workspace}"
           # Move active window to a workspace with mainMod + SHIFT + [0-9]
-          "\$mainMod SHIFT, ${key}, movetoworkspacesilent, ${num}"
-        ] ++ genKeybinds (n + 1);
+          "\$mainMod SHIFT, ${key}, movetoworkspacesilent, ${workspace}"
+        ] ++ genKeybinds (n + 1); # and finally the recursion where we concat the next number up
       in [
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, C, killactive,"
@@ -285,7 +290,7 @@ in {
         "SUPER, PRINT, exec, grimblast --notify copysave screen ~/Pictures"
         "SHIFT, PRINT, exec, grimblast --notify copysave area ~/Pictures"
         "CTRL, PRINT, exec, grimblast --notify copysave active ~/Pictures"
-      ] ++ genKeybinds 0; # end bind
+      ] ++ genKeybinds 1; # call the function to generate keybinds for workspaces 1 -> 10
 
       bindm = [
         "$mainMod, mouse:272, movewindow"
