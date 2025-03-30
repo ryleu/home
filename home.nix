@@ -11,7 +11,8 @@ let
     "ss01"
     "ss06"
   ];
-in {
+in
+{
   home = {
     username = "ryleu";
     homeDirectory = "/home/ryleu";
@@ -44,6 +45,7 @@ in {
       rustc
       rustfmt
       nix-search
+      nixfmt-rfc-style
 
       # apps
       spotify
@@ -85,7 +87,12 @@ in {
     };
   };
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [ monoFont ];
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -108,14 +115,15 @@ in {
       exec-once = [
         "nm-applet &"
         "waybar &"
-        "systemctl start --user makoctl &"
+        "makoctl &"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
-      # env = {
-      #   XCURSOR_SIZE = "24";
-      #   HYPRCURSOR_SIZE = "24";
-      # };
+
+      env = [
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
+      ];
 
       # Refer to https://wiki.hyprland.org/Configuring/Variables/
 
@@ -180,22 +188,22 @@ in {
         ];
 
         animation = [
-            "global, 1, 10, default"
-            "border, 1, 5.39, easeOutQuint"
-            "windows, 1, 4.79, easeOutQuint"
-            "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
-            "windowsOut, 1, 1.49, linear, popin 87%"
-            "fadeIn, 1, 1.73, almostLinear"
-            "fadeOut, 1, 1.46, almostLinear"
-            "fade, 1, 3.03, quick"
-            "layers, 1, 3.81, easeOutQuint"
-            "layersIn, 1, 4, easeOutQuint, fade"
-            "layersOut, 1, 1.5, linear, fade"
-            "fadeLayersIn, 1, 1.79, almostLinear"
-            "fadeLayersOut, 1, 1.39, almostLinear"
-            "workspaces, 1, 1.94, almostLinear, fade"
-            "workspacesIn, 1, 1.21, almostLinear, fade"
-            "workspacesOut, 1, 1.94, almostLinear, fade"
+          "global, 1, 10, default"
+          "border, 1, 5.39, easeOutQuint"
+          "windows, 1, 4.79, easeOutQuint"
+          "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
+          "windowsOut, 1, 1.49, linear, popin 87%"
+          "fadeIn, 1, 1.73, almostLinear"
+          "fadeOut, 1, 1.46, almostLinear"
+          "fade, 1, 3.03, quick"
+          "layers, 1, 3.81, easeOutQuint"
+          "layersIn, 1, 4, easeOutQuint, fade"
+          "layersOut, 1, 1.5, linear, fade"
+          "fadeLayersIn, 1, 1.79, almostLinear"
+          "fadeLayersOut, 1, 1.39, almostLinear"
+          "workspaces, 1, 1.94, almostLinear, fade"
+          "workspacesIn, 1, 1.21, almostLinear, fade"
+          "workspacesOut, 1, 1.94, almostLinear, fade"
         ];
       }; # end animations
 
@@ -229,7 +237,7 @@ in {
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-            natural_scroll = true;
+          natural_scroll = true;
         };
       };
 
@@ -249,48 +257,57 @@ in {
       "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
 
       # See https://wiki.hyprland.org/Configuring/Binds/ for more
-      bind = let genKeybinds = n: # n will go 1 -> 10
-        if n > 10 then [ ]
-        else let
-          # for each of those 1 -> 10 we need to figure out the corresponding workspace and key
-          workspace = toString n;
-          # the workspace is just toString n, but we need key 0 to map to workspace 10
-          key = if workspace == "10" then "0"
-          else workspace;
-        in [ # now for the actual keybinds
-          # Switch workspaces with mainMod + [0-9]
-          "\$mainMod, ${key}, workspace, ${workspace}"
-          # Move active window to a workspace with mainMod + SHIFT + [0-9]
-          "\$mainMod SHIFT, ${key}, movetoworkspacesilent, ${workspace}"
-        ] ++ genKeybinds (n + 1); # and finally the recursion where we concat the next number up
-      in [
-        "$mainMod, RETURN, exec, $terminal"
-        "$mainMod, C, killactive,"
-        "$mainMod SHIFT, M, exit,"
-        "$mainMod, E, exec, $fileManager"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, M, fullscreen, 1"
-        "$mainMod, F, fullscreen, 0"
-        "$mainMod, R, exec, $menu"
-        "$mainMod, P, pseudo," # dwindle
-        "$mainMod, J, togglesplit," # dwindle
+      bind =
+        let
+          genKeybinds =
+            n: # n will go 1 -> 10
+            if n > 10 then
+              [ ]
+            else
+              let
+                # for each of those 1 -> 10 we need to figure out the corresponding workspace and key
+                workspace = toString n;
+                # the workspace is just toString n, but we need key 0 to map to workspace 10
+                key = if workspace == "10" then "0" else workspace;
+              in
+              [
+                # now for the actual keybinds
+                # Switch workspaces with mainMod + [0-9]
+                "$mainMod, ${key}, workspace, ${workspace}"
+                # Move active window to a workspace with mainMod + SHIFT + [0-9]
+                "$mainMod SHIFT, ${key}, movetoworkspacesilent, ${workspace}"
+              ]
+              ++ genKeybinds (n + 1); # and finally the recursion where we concat the next number up
+        in
+        [
+          "$mainMod, RETURN, exec, $terminal"
+          "$mainMod, C, killactive,"
+          "$mainMod SHIFT, M, exit,"
+          "$mainMod, E, exec, $fileManager"
+          "$mainMod, V, togglefloating,"
+          "$mainMod, M, fullscreen, 1"
+          "$mainMod, F, fullscreen, 0"
+          "$mainMod, R, exec, $menu"
+          "$mainMod, P, pseudo," # dwindle
+          "$mainMod, J, togglesplit," # dwindle
 
-        # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+          # Move focus with mainMod + arrow keys
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
 
-        # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+          # Scroll through existing workspaces with mainMod + scroll
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
 
-        # grimblast
-        ", PRINT, exec, grimblast --notify copysave output ~/Pictures"
-        "SUPER, PRINT, exec, grimblast --notify copysave screen ~/Pictures"
-        "SHIFT, PRINT, exec, grimblast --notify copysave area ~/Pictures"
-        "CTRL, PRINT, exec, grimblast --notify copysave active ~/Pictures"
-      ] ++ genKeybinds 1; # call the function to generate keybinds for workspaces 1 -> 10
+          # grimblast
+          ", PRINT, exec, grimblast --notify copysave output ~/Pictures"
+          "SUPER, PRINT, exec, grimblast --notify copysave screen ~/Pictures"
+          "SHIFT, PRINT, exec, grimblast --notify copysave area ~/Pictures"
+          "CTRL, PRINT, exec, grimblast --notify copysave active ~/Pictures"
+        ]
+        ++ genKeybinds 1; # call the function to generate keybinds for workspaces 1 -> 10
 
       bindm = [
         "$mainMod, mouse:272, movewindow"
@@ -346,6 +363,64 @@ in {
   };
 
   programs = {
+    zed-editor =
+      let
+        zedFontFeatures = builtins.listToAttrs (
+          map (feature: {
+            name = feature;
+            value = true;
+          }) fontFeatures
+        );
+      in
+      {
+        enable = true;
+        extensions = [
+          "git-firefly"
+          "nix"
+          "cargo-tom"
+        ];
+        userSettings = {
+          assistant = {
+            default_model = {
+              provider = "copilot_chat";
+              model = "claude-3-5-sonnet";
+            };
+            version = "2";
+          };
+          telemetry = {
+            diagnostics = false;
+            metrics = false;
+          };
+          hour_format = "hour24";
+          auto_update = false;
+          vim_mode = true;
+          ui_font_size = 16;
+          theme = {
+            mode = "system";
+            light = "One Light";
+            dark = "One Dark";
+          };
+          languages = {
+            "Nix" = {
+              language_servers = [
+                "nixd"
+                "nil"
+              ];
+            };
+          };
+          buffer_font_size = 16;
+          buffer_font_family = monoFont;
+          buffer_font_features = zedFontFeatures;
+          terminal = {
+            font_family = monoFont;
+            font_features = zedFontFeatures;
+            env = {
+              "TERM" = "xterm-256color";
+            };
+          };
+        };
+      };
+
     kitty = {
       enable = true;
       font = {
@@ -355,9 +430,7 @@ in {
       settings = {
         disable_ligatures = "cursor";
         font_family =
-          "family=\"${monoFont}\" features=\""
-          + (builtins.concatStringsSep " +" fontFeatures)
-          + "\"";
+          "family=\"${monoFont}\" features=\"" + (builtins.concatStringsSep " +" fontFeatures) + "\"";
       };
     };
 
@@ -415,7 +488,9 @@ in {
     };
 
     # Let Home Manager install and manage itself.
-    home-manager.enable = true;
+    home-manager = {
+      enable = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
