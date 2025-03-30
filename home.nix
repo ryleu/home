@@ -246,7 +246,19 @@ in {
       "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
 
       # See https://wiki.hyprland.org/Configuring/Binds/ for more
-      bind = [
+      bind = let genKeybinds = n:
+        if n > 10 then [ ]
+        else let
+          key = toString n;
+          num = if key == 0 then "10"
+          else key;
+        in [
+          # Switch workspaces with mainMod + [0-9]
+          "\$mainMod, ${key}, workspace, ${num}"
+          # Move active window to a workspace with mainMod + SHIFT + [0-9]
+          "\$mainMod SHIFT, ${key}, movetoworkspacesilent, ${num}"
+        ] ++ genKeybinds (n + 1);
+      in [
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, C, killactive,"
         "$mainMod SHIFT, M, exit,"
@@ -264,30 +276,6 @@ in {
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
-        # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
-
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
-        "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
-        "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
-        "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
-        "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
-        "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
-        "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
-        "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
-        "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
-        "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
-
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
@@ -297,7 +285,7 @@ in {
         "SUPER, PRINT, exec, grimblast --notify copysave screen ~/Pictures"
         "SHIFT, PRINT, exec, grimblast --notify copysave area ~/Pictures"
         "CTRL, PRINT, exec, grimblast --notify copysave active ~/Pictures"
-      ]; # end bind
+      ] ++ genKeybinds 0; # end bind
 
       bindm = [
         "$mainMod, mouse:272, movewindow"
