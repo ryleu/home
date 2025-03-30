@@ -356,19 +356,6 @@ in {
       };
     };
 
-    ghostty = {
-      enable = true;
-      enableBashIntegration = true;
-      settings = {
-        font-size = 13;
-        font-family = [
-          ""
-          monoFont
-        ];
-        font-feature = fontFeatures;
-      };
-    };
-
     direnv = {
       enable = true;
       enableBashIntegration = true; # see note on other shells below
