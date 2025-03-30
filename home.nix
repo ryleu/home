@@ -349,7 +349,10 @@ in {
       };
       settings = {
         disable_ligatures = "cursor";
-        font_family = "family=\"${monoFont}\" features=\"" + (builtins.concatStringsSep " +" fontFeatures) + "\"";
+        font_family =
+          "family=\"${monoFont}\" features=\""
+          + (builtins.concatStringsSep " +" fontFeatures)
+          + "\"";
       };
     };
 
