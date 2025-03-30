@@ -15,14 +15,20 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       baseModules = [ ./home.nix ];
-    in {
-      homeConfigurations."ryleu" = home-manager.lib.homeManagerConfiguration {
+      default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = baseModules;
       };
-      homeConfiguration."ryleu@rectangle" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = baseModules ++ [ ./hosts/rectangle.nix ];
+    in {
+      homeConfigurations = {
+        "ryleu@barely-better" = default;
+        "ryleu@mathrock" = default;
+        "ryleu@rectangle" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = baseModules ++ [
+            ./hosts/rectangle.nix
+          ];
+        };
       };
     };
 }
