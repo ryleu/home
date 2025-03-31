@@ -28,7 +28,6 @@ in
       phinger-cursors
       papirus-icon-theme
       networkmanagerapplet
-      mako
 
       # fonts
       fira-code-nerdfont
@@ -115,7 +114,6 @@ in
       exec-once = [
         "nm-applet &"
         "waybar &"
-        "makoctl &"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
@@ -490,6 +488,20 @@ in
     # Let Home Manager install and manage itself.
     home-manager = {
       enable = true;
+    };
+  };
+
+  services = {
+    mako = {
+      enable = true;
+      actions = true;
+      anchor = "top-right";
+      backgroundColor = "#000000ff";
+      borderColor = "#00ff99ee";
+      textColor = "#ffffffff";
+      borderRadius = 10;
+      borderSize = 2;
+      defaultTimeout = 3000;
     };
   };
 

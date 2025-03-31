@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  services.mako.output = "DP-2";
+
   wayland.windowManager.hyprland = {
     settings = {
       # See https://wiki.hyprland.org/Configuring/Monitors/
