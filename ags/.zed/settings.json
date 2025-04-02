@@ -1,0 +1,17 @@
+{
+  "lsp": {
+    "eslint": {
+      "binary": {
+        "path_lookup": true
+      }
+    },
+    "json-language-server": {
+      "binary": {
+        "path_lookup": true
+      }
+    }
+  },
+  "node": {
+    "ignore_system_version": false
+  }
+}

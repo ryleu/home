@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 let
   monoFont = "FiraCode Nerd Font";
@@ -28,6 +28,7 @@ in
       phinger-cursors
       papirus-icon-theme
       networkmanagerapplet
+      inputs.ryleu-astal.${system}.default
 
       # fonts
       fira-code-nerdfont
