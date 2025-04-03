@@ -55,6 +55,7 @@ in
       vscode
       rstudio
       zotero
+      logseq
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -509,5 +510,13 @@ in
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+
+    permittedInsecurePackages = [
+      # temporary to allow installation of logseq
+      "electron-27.3.11"
+    ];
+  };
+
 }
