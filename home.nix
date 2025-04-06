@@ -57,6 +57,7 @@ in
       zotero
       logseq
       jetbrains.idea-community-src
+      gabutdm
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
