@@ -32,6 +32,7 @@ in
       # fonts
       fira-code-nerdfont
       minecraftia
+      unifont
 
       # development
       gh
@@ -45,6 +46,8 @@ in
       rustfmt
       nix-search
       nixfmt-rfc-style
+      ffmpeg-full
+      python3
 
       # apps
       spotify
