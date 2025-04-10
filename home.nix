@@ -371,6 +371,8 @@ in
   };
 
   programs = {
+    firefox.enable = true;
+
     zed-editor =
       let
         zedFontFeatures = builtins.listToAttrs (
