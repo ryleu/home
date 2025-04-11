@@ -63,6 +63,7 @@ in
       gabutdm
       htop
       nvtopPackages.full
+      prusa-slicer
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
