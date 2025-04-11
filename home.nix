@@ -62,7 +62,7 @@ in
       jetbrains.idea-community-src
       gabutdm
       htop
-      nvtop
+      nvtopPackages.full
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
