@@ -444,6 +444,7 @@ in
         disable_ligatures = "cursor";
         font_family =
           "family=\"${monoFont}\" features=\"" + (builtins.concatStringsSep " +" fontFeatures) + "\"";
+        notify_on_cmd_finish = "invisible";
       };
     };
 
