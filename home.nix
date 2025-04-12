@@ -374,6 +374,7 @@ in
   };
 
   programs = {
+    thefuck.enable = true;
     firefox.enable = true;
 
     zed-editor =
