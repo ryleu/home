@@ -54,7 +54,7 @@ in
       prismlauncher
       brave
       zed-editor
-      vesktop
+      discord
       vscode
       rstudio
       zotero
