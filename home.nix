@@ -63,6 +63,7 @@ in
       jetbrains.idea-community-src
       gabutdm
       htop
+      fastfetch
       nvtopPackages.full
       prusa-slicer
       bambu-studio
