@@ -50,11 +50,12 @@ in
       python3
 
       # apps
+      vlc
       spotify
       prismlauncher
       brave
       zed-editor
-      discord
+      vesktop
       vscode
       rstudio
       zotero
