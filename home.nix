@@ -65,6 +65,7 @@ in
       htop
       nvtopPackages.full
       prusa-slicer
+      bambu-studio
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
