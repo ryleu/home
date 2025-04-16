@@ -14,18 +14,34 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      baseModules = [ ./home.nix ./conf/hyprland.nix ./conf/ssh.nix ];
+      baseModules = [
+        ./home.nix
+        ./conf/hyprland.nix
+        ./conf/ssh.nix
+        ./packages/cli.nix
+      ];
+      guiModules = [
+        ./packages/apps.nix
+        ./packages/desktop.nix
+        ./packages/fonts.nix
+      ];
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = baseModules;
+        modules = baseModules ++ guiModules;
       };
     in {
       homeConfigurations = {
         "ryleu@barely-better" = default;
         "ryleu@mathrock" = default;
-        "ryleu@rectangle" = home-manager.lib.homeManagerConfiguration {
+        "ryleu@ripi" = {
           inherit pkgs;
           modules = baseModules ++ [
+            ./hosts/ripi.nix
+          ];
+        };
+        "ryleu@rectangle" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = baseModules ++ guiModules ++ [
             ./hosts/rectangle.nix
           ];
         };

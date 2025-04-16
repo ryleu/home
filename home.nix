@@ -18,57 +18,6 @@ in
     homeDirectory = "/home/ryleu";
     stateVersion = "24.11"; # do not change without first properly migrating your setup!
 
-    packages = with pkgs; [
-      # desktop
-      gnomeExtensions.appindicator
-      hyprcursor
-      waybar
-      grimblast
-      wofi
-      phinger-cursors
-      papirus-icon-theme
-      networkmanagerapplet
-
-      # fonts
-      fira-code-nerdfont
-      minecraftia
-      unifont
-
-      # development
-      gh
-      nix-index
-      nixd
-      nil
-      wget
-      cargo
-      rustc
-      rustfmt
-      nix-search
-      nixfmt-rfc-style
-      ffmpeg-full
-      python314
-      wl-clipboard
-
-      # apps
-      vlc
-      spotify
-      prismlauncher
-      brave
-      zed-editor
-      vesktop
-      vscode
-      rstudio
-      zotero
-      logseq
-      jetbrains.idea-community-src
-      gabutdm
-      htop
-      fastfetch
-      nvtopPackages.full
-      prusa-slicer
-      bambu-studio
-    ];
-
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     file = {
