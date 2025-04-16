@@ -46,7 +46,8 @@ in
       nix-search
       nixfmt-rfc-style
       ffmpeg-full
-      python3
+      python314
+      wl-clipboard
 
       # apps
       vlc
