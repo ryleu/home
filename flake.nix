@@ -14,7 +14,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      baseModules = [ ./home.nix ./conf/hyprland.nix ];
+      baseModules = [ ./home.nix ./conf/hyprland.nix ./conf/ssh.nix ];
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = baseModules;
