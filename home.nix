@@ -264,7 +264,7 @@ in
         commit.gpgsign = true;
         gpg.format = "ssh";
         user = {
-          signingkey = "~/.ssh/github.pub";
+          signingkey = "~/.ssh/github";
           email = "69326171+ryleu@users.noreply.github.com";
           name = "ryleu";
         };
