@@ -273,23 +273,32 @@ in
       };
     };
 
-    bash = {
+    zsh = {
       enable = true;
+      enableCompletion = true;
+      enableVteIntegration = true;
+      autosuggestion = {
+        enable = true;
+      };
+      history = {
+        ignoreAllDups = true;
+        share = true;
+      };
+      shellAliases = {
+        la = "ls -alF";
+      };
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" ];
+        theme = "robbyrussell";
+      };
     };
 
-    starship = {
+    eza = {
       enable = true;
-      # Configuration written to ~/.config/starship.toml
-      settings = {
-        # add_newline = false;
-
-        # character = {
-        #   success_symbol = "[➜](bold green)";
-        #   error_symbol = "[➜](bold red)";
-        # };
-
-        # package.disabled = true;
-      };
+      enableZshIntegration = true;
+      colors = "auto";
+      icons = "auto";
     };
 
     obs-studio = {
