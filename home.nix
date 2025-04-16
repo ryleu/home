@@ -148,6 +148,18 @@ in
           user = "voron2";
           identityFile = "~/.ssh/voron";
         };
+
+        "redoak" = {
+          hostname = "172.28.0.8";
+          user = "ryleu";
+          identityFile = "~/.ssh/redoak";
+        };
+
+        "monument" = {
+          hostname = "monument";
+          user = "truenas_admin";
+          identityFile = "~/.ssh/monument";
+        };
       };
     };
 
