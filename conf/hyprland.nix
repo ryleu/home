@@ -130,7 +130,7 @@ in
         pseudotile = false;
         preserve_split = false;
         force_split = 2;
-        default_split_ratio = 0.64; # 16:9
+        split_width_multiplier = 1.778; # 16:9
       };
 
       # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
