@@ -25,7 +25,7 @@
       };
 
       "redoak" = {
-        hostname = "172.28.0.8";
+        hostname = "redoak";
         user = "ryleu";
         identityFile = "~/.ssh/redoak";
       };
