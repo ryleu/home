@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
+  home = {
+    packages = with pkgs; [
     vlc
     spotify
     prismlauncher
@@ -16,5 +17,17 @@
     gabutdm
     prusa-slicer
     bambu-studio
-  ];
+    ];
+  };
+
+  programs = {
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-vkcapture
+        obs-pipewire-audio-capture
+      ];
+    };
+  };
 }

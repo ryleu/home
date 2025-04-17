@@ -250,15 +250,6 @@ in
       icons = "auto";
     };
 
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
-        obs-vkcapture
-        obs-pipewire-audio-capture
-      ];
-    };
-
     # Let Home Manager install and manage itself.
     home-manager = {
       enable = true;

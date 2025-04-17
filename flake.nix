@@ -17,11 +17,11 @@
 
       baseModules = [
         ./home.nix
-        ./conf/hyprland.nix
         ./conf/ssh.nix
         ./packages/cli.nix
       ];
       guiModules = [
+        ./conf/hyprland.nix
         ./packages/apps.nix
         ./packages/desktop.nix
         ./packages/fonts.nix
@@ -34,9 +34,8 @@
       homeConfigurations = {
         "ryleu@barely-better" = default;
         "ryleu@mathrock" = default;
-        "ryleu@ripi" = {
+        "ryleu@ripi" = home-manager.lib.homeManagerConfiguration {
           pkgs = arm64_pkgs;
-          system = "aarch64-linux";
           modules = baseModules ++ [
             ./hosts/ripi.nix
           ];
@@ -50,3 +49,4 @@
       };
     };
 }
+
