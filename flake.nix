@@ -12,8 +12,9 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      amd64_pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      arm64_pkgs = nixpkgs.legacyPackages."aarch64-linux";
+
       baseModules = [
         ./home.nix
         ./conf/hyprland.nix
@@ -26,7 +27,7 @@
         ./packages/fonts.nix
       ];
       default = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = amd64_pkgs;
         modules = baseModules ++ guiModules;
       };
     in {
@@ -34,13 +35,14 @@
         "ryleu@barely-better" = default;
         "ryleu@mathrock" = default;
         "ryleu@ripi" = {
-          inherit pkgs;
+          pkgs = arm64_pkgs;
+          system = "aarch64-linux";
           modules = baseModules ++ [
             ./hosts/ripi.nix
           ];
         };
         "ryleu@rectangle" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = amd64_pkgs;
           modules = baseModules ++ guiModules ++ [
             ./hosts/rectangle.nix
           ];
