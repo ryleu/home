@@ -18,5 +18,6 @@
     fastfetch
     htop
     nvtopPackages.full
+    eza
   ];
 }
