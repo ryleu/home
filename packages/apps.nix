@@ -30,6 +30,7 @@ in
       prusa-slicer
       bambu-studio
       pavucontrol
+      openscad
     ];
   };
 
