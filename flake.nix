@@ -22,6 +22,7 @@
       ];
       guiModules = [
         ./conf/hyprland.nix
+        ./conf/sway.nix
         ./packages/apps.nix
         ./packages/desktop.nix
         ./packages/fonts.nix

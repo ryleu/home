@@ -6,5 +6,7 @@
     minecraftia
     unifont
     source-code-pro
+    corefonts
+    vistafonts
   ];
 }
