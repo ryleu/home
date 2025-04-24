@@ -5,5 +5,6 @@
     fira-code-nerdfont
     minecraftia
     unifont
+    source-code-pro
   ];
 }

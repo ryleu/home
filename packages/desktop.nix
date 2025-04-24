@@ -23,6 +23,7 @@ in
       phinger-cursors
       papirus-icon-theme
       networkmanagerapplet
+      libreoffice
     ];
 
     pointerCursor = {
