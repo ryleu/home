@@ -308,32 +308,43 @@ in
       };
     }; # end hyprlock
 
-  waybar = {
-    enable = true;
-
-    settings = {
-      mainBar = {
-        layer = "top";
-        postition = "top";
-        height = 30;
-        modules-left = [
-          "hyprland/workspaces"
-        ];
-        modules-center = [
-          "hyprland/window"
-        ];
-        modules-right = [
-          "mpd"
-          "battery"
-          "clock"
-          "tray"
-        ];
-        "hyprland/workspaces" = {
-          all-outputs = true;
-        };
-      }; # end mainBar
-    };
-  }; # end waybar
-
+    waybar = {
+      enable = true;
+  
+      settings = {
+        mainBar = {
+          layer = "top";
+          postition = "top";
+          height = 30;
+          modules-left = [
+            "keyboard-state"
+            "hyprland/workspaces"
+          ];
+          modules-center = [
+            "hyprland/window"
+          ];
+          modules-right = [
+            "mpd"
+            "battery"
+            "clock"
+            "tray"
+          ];
+  
+          "hyprland/workspaces" = {
+            all-outputs = true;
+          };
+  
+          "keyboard-state" = {
+            numlock = true;
+            capslock = pkgs.lib.mkDefault false;
+            format = "{name} {icon}";
+            format-icons = {
+              locked = "";
+              unlocked = "";
+            };
+          };
+        }; # end mainBar
+      }; # end settings
+    }; # end waybar
   }; # end programs
-}
+ }
