@@ -317,16 +317,18 @@ in
           postition = "top";
           height = 30;
           modules-left = [
-            "keyboard-state"
             "hyprland/workspaces"
           ];
           modules-center = [
             "hyprland/window"
           ];
           modules-right = [
-            "mpd"
             "battery"
+            "backlight"
+            "cpu"
+            "pulseaudio"
             "clock"
+            "keyboard-state"
             "tray"
           ];
   
@@ -342,6 +344,58 @@ in
               locked = "";
               unlocked = "";
             };
+          };
+
+          "tray" = {
+            spacing = 10;
+          };
+
+          "clock" = {
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+            format-alt = "{:%Y-%m-%d}";
+          };
+
+          "cpu" = {
+            format = "{usage}% ";
+            tooltip = false;
+          };
+
+          "backlight" = {
+            format = "{percent}% {icon}";
+            format-icons = [ "" "" "" "" "" "" "" "" "" ];
+          };
+
+          "battery" = {
+            states = {
+              warning = 30;
+              critical = 15;
+            };
+            format = "{capacity}% {icon}";
+            format-full = "{capacity}% {icon}";
+            format-charging = "{capacity}% ";
+            format-plugged = "{capacity}% ";
+            format-alt = "{time} {icon}";
+            format-icons = [ "" "" "" "" "" ];
+          };
+
+          "pulseaudio" = {
+            # scroll-step = 1; # %, can be a float
+            format = "{volume}% {icon} {format_source}";
+            format-bluetooth = "{volume}% {icon} {format_source}";
+            format-bluetooth-muted = " {icon} {format_source}";
+            format-muted = " {format_source}";
+            format-source = "{volume}% ";
+            format-source-muted = "";
+            format-icons = {
+              headphone = "";
+              hands-free = "";
+              headset = "";
+              phone = "";
+              portable = "";
+              car = "";
+              default = [ "" "" "" ];
+            };
+            on-click = "pavucontrol";
           };
         }; # end mainBar
       }; # end settings
