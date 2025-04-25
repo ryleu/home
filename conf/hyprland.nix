@@ -34,6 +34,7 @@ in
       exec-once = [
         "nm-applet &"
         "waybar &"
+        "systemctl --user start hypridle.service&"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
@@ -401,4 +402,30 @@ in
       }; # end settings
     }; # end waybar
   }; # end programs
- }
+
+  services = {
+    hypridle = {
+      enable = true;
+
+      settings = {
+        general = {
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+          ignore_dbus_inhibit = false;
+          lock_cmd = "hyprlock";
+        };
+
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = "hyprlock";
+          }
+          {
+            timeout = 600;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+        ];
+      }; # end settings
+    }; # end hypridle
+  }; # end services
+}
