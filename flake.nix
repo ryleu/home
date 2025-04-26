@@ -33,7 +33,12 @@
       };
     in {
       homeConfigurations = {
-        "ryleu@barely-better" = default;
+        "ryleu@barely-better" = home-manager.lib.homeManagerConfiguration {
+          pkgs = amd64_pkgs;
+          modules = baseModules ++ guiModules ++ [
+            ./hosts/barely-better.nix
+          ];
+        };
         "ryleu@mathrock" = default;
         "ryleu@ripi" = home-manager.lib.homeManagerConfiguration {
           pkgs = arm64_pkgs;
