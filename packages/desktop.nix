@@ -24,6 +24,8 @@ in
       papirus-icon-theme
       networkmanagerapplet
       libreoffice
+      adwaita-qt6
+      adwaita-qt
     ];
 
     pointerCursor = {
@@ -44,6 +46,16 @@ in
 
   qt = {
     enable = true;
+
+    kde.settings = {
+      
+    };
+
+    platformTheme.name = "adwaita";
+
+    style = {
+      name = "adwaita-dark";
+    };
   };
 
   gtk = {
