@@ -324,6 +324,7 @@ in
             "hyprland/window"
           ];
           modules-right = [
+            "idle_inhibitor"
             "battery"
             "backlight"
             "cpu"

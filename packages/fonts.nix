@@ -10,5 +10,6 @@
     vistafonts
     comic-mono
     comic-neue
+    font-awesome
   ];
 }
