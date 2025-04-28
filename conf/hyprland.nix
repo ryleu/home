@@ -338,7 +338,7 @@ in
           };
   
           "keyboard-state" = {
-            numlock = true;
+            numlock = pkgs.lib.mkDefault false;
             capslock = pkgs.lib.mkDefault false;
             format = "{name} {icon}";
             format-icons = {
