@@ -22,6 +22,7 @@ in
       zed-editor
       vesktop
       vscode
+      jupyter-all
       rstudio
       zotero
       logseq

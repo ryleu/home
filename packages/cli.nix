@@ -13,7 +13,6 @@
     nix-search
     nixfmt-rfc-style
     ffmpeg-full
-    python314
     wl-clipboard
     fastfetch
     htop
