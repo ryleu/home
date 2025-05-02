@@ -32,6 +32,7 @@ in
       bambu-studio
       pavucontrol
       openscad
+      bottles
     ];
   };
 
