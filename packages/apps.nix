@@ -22,7 +22,13 @@ in
       zed-editor
       vesktop
       vscode
-      jupyter-all
+      (python312.withPackages (ps: [
+        ps.numpy
+        ps.jupyter
+        ps.uv
+        ps.pip
+        ps.matplotlib
+      ]))
       rstudio
       zotero
       logseq

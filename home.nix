@@ -98,7 +98,7 @@
         commit.gpgsign = true;
         gpg.format = "ssh";
         user = {
-          signingkey = "~/.ssh/github";
+          signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFnmFTv+Pt/QwhB8mK5YiCjj8WR9REPPPKzg3IKMZHXz";
           email = "69326171+ryleu@users.noreply.github.com";
           name = "ryleu";
         };
