@@ -29,6 +29,7 @@ in
         ps.pip
         ps.matplotlib
       ]))
+      kdePackages.dolphin
       rstudio
       zotero
       logseq
