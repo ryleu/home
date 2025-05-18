@@ -125,6 +125,10 @@ in
           "family=\"${monoFont}\" features=\"" + (builtins.concatStringsSep " +" fontFeatures) + "\"";
         notify_on_cmd_finish = "invisible";
       };
+      shellIntegration = {
+        enableZshIntegration = true;
+      };
+      themeFile = "gruvbox-dark";
     };
   };
 
