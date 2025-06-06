@@ -31,6 +31,12 @@
         identityFile = "~/.ssh/redoak";
       };
 
+      "proxy" = {
+        hostname = "proxy";
+        user = "ryleu";
+        identityFile = "~/.ssh/proxy";
+      };
+
       "monument" = {
         hostname = "monument";
         user = "truenas_admin";
