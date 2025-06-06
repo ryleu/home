@@ -339,8 +339,8 @@ in
           };
   
           "keyboard-state" = {
-            numlock = pkgs.lib.mkDefault false;
-            capslock = pkgs.lib.mkDefault false;
+            numlock = true;
+            capslock = true;
             format = "{name} {icon}";
             format-icons = {
               locked = "";
