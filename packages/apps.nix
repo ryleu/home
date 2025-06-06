@@ -15,6 +15,7 @@ in
 {
   home = {
     packages = with pkgs; [
+      krita
       vlc
       spotify
       prismlauncher
@@ -29,7 +30,8 @@ in
         ps.pip
         ps.matplotlib
       ]))
-      kdePackages.dolphin
+      hugin
+      qgis
       rstudio
       zotero
       logseq

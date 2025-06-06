@@ -26,11 +26,16 @@
     # shell provided by Home Manager.
     sessionVariables = {
       EDITOR = "vim";
+      HYPHEN_INSENSITIVE = "true";
     };
   };
 
   programs = {
     thefuck.enable = true;
+
+    neovim = {
+      enable = true;
+    };
 
     vim = {
       defaultEditor = true;
@@ -112,6 +117,9 @@
       enableCompletion = true;
       enableVteIntegration = true;
       autosuggestion = {
+        enable = true;
+      };
+      syntaxHighlighting = {
         enable = true;
       };
       history = {

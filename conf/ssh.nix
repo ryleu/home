@@ -36,6 +36,12 @@
         user = "truenas_admin";
         identityFile = "~/.ssh/monument";
       };
+
+      "clucky" = {
+        hostname = "192.168.1.69";
+        user = "clucky";
+        identityFile = "~/.ssh/clucky";
+      };
     };
   };
 }
