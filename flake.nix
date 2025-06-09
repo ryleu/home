@@ -52,6 +52,12 @@
             ./hosts/rectangle.nix
           ];
         };
+        "ryleu@redoak" = home-manager.lib.homeManagerConfiguration {
+          pkgs = amd64_pkgs;
+          modules = baseModules ++ [
+            ./hosts/redoak.nix
+          ];
+        };
       };
     };
 }
