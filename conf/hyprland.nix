@@ -29,6 +29,8 @@ in
       "$terminal" = "kitty";
       "$fileManager" = "nautilus";
       "$menu" = "wofi --show drun";
+      "$touchpadScript" =
+        ''bash -c 'if hyprctl getoption input:touchpad:disable_while_typing | grep -q "int: 1"; then hyprctl keyword input:touchpad:disable_while_typing false ; else hyprctl keyword input:touchpad:disable_while_typing true ; fi' '';
 
       # Autostart necessary processes (like notifications daemons, status bars, etc.)
       exec-once = [
@@ -214,6 +216,7 @@ in
           "$mainMod, P, pseudo," # dwindle
           "$mainMod, J, togglesplit," # dwindle
           "$mainMod, L, exec, hyprlock --immediate"
+          "$mainMod, T, exec, $touchpadScript" # Add this line
 
           # Move focus with mainMod + arrow keys
           "$mainMod, left, movefocus, l"
@@ -274,7 +277,7 @@ in
   programs = {
     hyprlock = {
       enable = true;
-  
+
       settings = {
         general = {
           disable_loading_bar = true;
@@ -282,7 +285,7 @@ in
           hide_cursor = true;
           no_fade_in = false;
         };
-      
+
         background = [
           {
             path = "screenshot";
@@ -290,7 +293,7 @@ in
             blur_size = 8;
           }
         ];
-      
+
         input-field = [
           {
             size = "200, 50";
@@ -311,7 +314,7 @@ in
 
     waybar = {
       enable = true;
-  
+
       settings = {
         mainBar = {
           layer = "top";
@@ -333,11 +336,11 @@ in
             "keyboard-state"
             "tray"
           ];
-  
+
           "hyprland/workspaces" = {
             all-outputs = true;
           };
-  
+
           "keyboard-state" = {
             numlock = true;
             capslock = true;
@@ -364,7 +367,17 @@ in
 
           "backlight" = {
             format = "{percent}% {icon}";
-            format-icons = [ "" "" "" "" "" "" "" "" "" ];
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
           };
 
           "battery" = {
@@ -377,7 +390,13 @@ in
             format-charging = "{capacity}% ";
             format-plugged = "{capacity}% ";
             format-alt = "{time} {icon}";
-            format-icons = [ "" "" "" "" "" ];
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
           };
 
           "pulseaudio" = {
@@ -395,7 +414,11 @@ in
               phone = "";
               portable = "";
               car = "";
-              default = [ "" "" "" ];
+              default = [
+                ""
+                ""
+                ""
+              ];
             };
             on-click = "pavucontrol";
           };
