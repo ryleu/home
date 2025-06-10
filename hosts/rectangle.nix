@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  services.mako.settings.output = "DP-2";
+  services.mako.output = "DP-2";
 
   wayland.windowManager.hyprland = {
     settings = {

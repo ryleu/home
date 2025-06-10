@@ -137,16 +137,14 @@ in
   services = {
     mako = {
       enable = true;
-      settings = {
-        actions = true;
-        anchor = "top-right";
-        backgroundColor = "#000000ff";
-        borderColor = "#00ff99ee";
-        textColor = "#ffffffff";
-        borderRadius = 10;
-        borderSize = 2;
-        defaultTimeout = 3000;
-      };
+      actions = true;
+      anchor = "top-right";
+      backgroundColor = "#000000ff";
+      borderColor = "#00ff99ee";
+      textColor = "#ffffffff";
+      borderRadius = 10;
+      borderSize = 2;
+      defaultTimeout = 3000;
     };
   };
 }
