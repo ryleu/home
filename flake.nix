@@ -58,6 +58,12 @@
             ./hosts/redoak.nix
           ];
         };
+        "ryleu@ivy" = home-manager.lib.homeManagerConfiguration {
+          pkgs = amd64_pkgs;
+          modules = baseModules ++ [
+            ./hosts/redoak.nix
+          ];
+        };
       };
     };
 }
