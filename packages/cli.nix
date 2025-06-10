@@ -18,5 +18,6 @@
     htop
     nvtopPackages.full
     eza
+    aria2
   ];
 }

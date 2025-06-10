@@ -11,6 +11,8 @@ let
     "ss01"
     "ss06"
   ];
+
+  wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/airplane_suitcase.png";
 in
 {
   wayland.windowManager.hyprland = {
@@ -34,9 +36,10 @@ in
 
       # Autostart necessary processes (like notifications daemons, status bars, etc.)
       exec-once = [
-        "nm-applet &"
-        "waybar &"
-        "systemctl --user start hypridle.service&"
+        "nm-applet"
+        "waybar "
+        "systemctl --user start hypridle.service"
+        "systemctl --user start hyprpaper.service"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
@@ -451,5 +454,20 @@ in
         ];
       }; # end settings
     }; # end hypridle
+
+    hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        splash = false;
+        preload = [
+          "${wallpaperPath}"
+        ];
+
+        wallpaper = [
+          ",${wallpaperPath}"
+        ];
+      };
+    };
   }; # end services
 }
