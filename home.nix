@@ -33,8 +33,11 @@
   programs = {
     thefuck.enable = true;
 
-    neovim = {
+    helix = {
       enable = true;
+      settings = {
+        theme = "gruvbox";
+      };
     };
 
     vim = {
