@@ -106,7 +106,7 @@
         commit.gpgsign = true;
         gpg.format = "ssh";
         user = {
-          signingkey = "/home/ryleu/.ssh/github";
+          signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFeciFh+2gPJVraEZ33Gne4jDQdeYNlG3Q0czt0hVsrv";
           email = "69326171+ryleu@users.noreply.github.com";
           name = "ryleu";
         };
@@ -119,12 +119,8 @@
       enable = true;
       enableCompletion = true;
       enableVteIntegration = true;
-      autosuggestion = {
-        enable = true;
-      };
-      syntaxHighlighting = {
-        enable = true;
-      };
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
       history = {
         ignoreAllDups = true;
         share = true;
