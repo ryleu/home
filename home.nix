@@ -4,26 +4,8 @@
   home = {
     username = "ryleu";
     homeDirectory = "/home/ryleu";
-    stateVersion = "24.11"; # do not change without first properly migrating your setup!
+    stateVersion = "24.11";
 
-    # Home Manager is pretty good at managing dotfiles. The primary way to manage
-    # plain files is through 'home.file'.
-    file = {
-      # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-      # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-      # # symlink to the Nix store copy.
-      # ".screenrc".source = dotfiles/screenrc;
-
-      # # You can also set the file content immediately.
-      # ".gradle/gradle.properties".text = ''
-      #   org.gradle.console=verbose
-      #   org.gradle.daemon.idletimeout=3600000
-      # '';
-    };
-
-    # Home Manager can also manage your environment variables through
-    # 'home.sessionVariables'. These will be explicitly sourced when using a
-    # shell provided by Home Manager.
     sessionVariables = {
       EDITOR = "vim";
       HYPHEN_INSENSITIVE = "true";
@@ -89,7 +71,7 @@
         " not contain bce. This causes incorrect background rendering when
         " using a color theme with a background color in terminals such as
         " kitty that do not support background color erase.
-        let &t_ut=\'\'
+        let &t_ut=''''
       '';
     };
 
@@ -121,17 +103,8 @@
       enableVteIntegration = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      history = {
-        ignoreAllDups = true;
-        share = true;
-      };
       shellAliases = {
         la = "ls -alF";
-      };
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" ];
-        theme = "robbyrussell";
       };
       plugins = [
         {
@@ -154,19 +127,56 @@
       icons = "auto";
     };
 
-    # Let Home Manager install and manage itself.
-    home-manager = {
+    home-manager.enable = true;
+
+    starship = {
       enable = true;
+      settings = {
+        # Disable the blank line at the start of the prompt
+        add_newline = false;
+
+        # Configure the prompt format to match robbyrussell theme
+        format = "$all";
+
+        # Configure individual prompt segments
+        character = {
+          success_symbol = "[➜](bold green)";
+          error_symbol = "[✗](bold red)";
+        };
+
+        directory = {
+          style = "blue bold";
+          truncation_length = 3;
+          truncation_symbol = "…/";
+        };
+
+        git_branch = {
+          format = "[$symbol$branch]($style) ";
+          style = "bold yellow";
+        };
+
+        git_status = {
+          format = "[$all_status$ahead_behind]($style) ";
+          style = "bold red";
+          conflicted = "💥";
+          ahead = "🏎💨";
+          behind = "😰";
+          diverged = "🔀";
+          untracked = "?";
+          stashed = "$";
+          modified = "!";
+          staged = "+";
+          renamed = "»";
+          deleted = "✘";
+        };
+      };
     };
   };
 
   nixpkgs.config = {
     allowUnfree = true;
-
     permittedInsecurePackages = [
-      # temporary to allow installation of logseq
       "electron-27.3.11"
     ];
   };
-
 }
