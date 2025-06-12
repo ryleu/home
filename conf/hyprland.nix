@@ -15,6 +15,8 @@ let
   wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/airplane_suitcase.png";
 in
 {
+  home.file.".config/waybar/style.css".source = ./waybar.css;
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -53,8 +55,8 @@ in
 
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
-        gaps_in = 5;
-        gaps_out = 20;
+        gaps_in = 3;
+        gaps_out = 12;
 
         border_size = 2;
 
