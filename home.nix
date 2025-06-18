@@ -4,7 +4,7 @@
   home = {
     username = "ryleu";
     homeDirectory = "/home/ryleu";
-    stateVersion = "24.11"; # do not change without first properly migrating your setup!
+    stateVersion = "25.05"; # do not change without first properly migrating your setup!
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
@@ -162,11 +162,8 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-
     permittedInsecurePackages = [
-      # temporary to allow installation of logseq
       "electron-27.3.11"
     ];
   };
-
 }
