@@ -20,4 +20,16 @@
     eza
     aria2
   ];
+
+  programs = {
+    chawan = {
+      enable = true;
+      settings = {
+        buffer = {
+          images = true;
+        };
+
+      };
+    };
+  };
 }
