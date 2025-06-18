@@ -28,7 +28,6 @@
         buffer = {
           images = true;
         };
-
       };
     };
   };
