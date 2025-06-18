@@ -15,6 +15,7 @@ in
 {
   home = {
     packages = with pkgs; [
+      qbittorrent
       krita
       vlc
       spotify
