@@ -48,7 +48,7 @@ in
     enable = true;
 
     kde.settings = {
-      
+
     };
 
     platformTheme.name = "adwaita";

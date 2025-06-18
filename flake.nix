@@ -10,7 +10,8 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs =
+    { nixpkgs, home-manager, ... }:
     let
       amd64_pkgs = nixpkgs.legacyPackages."x86_64-linux";
       arm64_pkgs = nixpkgs.legacyPackages."aarch64-linux";
@@ -31,13 +32,17 @@
         pkgs = amd64_pkgs;
         modules = baseModules ++ guiModules;
       };
-    in {
+    in
+    {
       homeConfigurations = {
         "ryleu@barely-better" = home-manager.lib.homeManagerConfiguration {
           pkgs = amd64_pkgs;
-          modules = baseModules ++ guiModules ++ [
-            ./hosts/barely-better.nix
-          ];
+          modules =
+            baseModules
+            ++ guiModules
+            ++ [
+              ./hosts/barely-better.nix
+            ];
         };
         "ryleu@mathrock" = default;
         "ryleu@ripi" = home-manager.lib.homeManagerConfiguration {
@@ -48,9 +53,12 @@
         };
         "ryleu@rectangle" = home-manager.lib.homeManagerConfiguration {
           pkgs = amd64_pkgs;
-          modules = baseModules ++ guiModules ++ [
-            ./hosts/rectangle.nix
-          ];
+          modules =
+            baseModules
+            ++ guiModules
+            ++ [
+              ./hosts/rectangle.nix
+            ];
         };
         "ryleu@redoak" = home-manager.lib.homeManagerConfiguration {
           pkgs = amd64_pkgs;
@@ -67,4 +75,3 @@
       };
     };
 }
-

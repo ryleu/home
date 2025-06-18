@@ -84,7 +84,7 @@
         " Window title
         let &t_ST = "\e[22;2t"
         let &t_RT = "\e[23;2t"
-        
+
         " vim hardcodes background color erase even if the terminfo file does
         " not contain bce. This causes incorrect background rendering when
         " using a color theme with a background color in terminals such as
