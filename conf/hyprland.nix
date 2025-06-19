@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  unstable_pkgs,
+  ...
+}:
 
 let
   monoFont = "FiraCode Nerd Font";
@@ -15,7 +20,13 @@ let
   wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/airplane_suitcase.png";
 in
 {
-  home.file.".config/waybar/style.css".source = ./waybar.css;
+  home = {
+    file.".config/quickshell/shell.qml".source = ./shell.qml;
+
+    packages = with unstable_pkgs; [
+      quickshell
+    ];
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -39,7 +50,7 @@ in
       # Autostart necessary processes (like notifications daemons, status bars, etc.)
       exec-once = [
         "nm-applet"
-        "waybar "
+        "quickshell"
         "systemctl --user start hypridle.service"
         "systemctl --user start hyprpaper.service"
       ];
@@ -317,119 +328,6 @@ in
       };
     }; # end hyprlock
 
-    waybar = {
-      enable = true;
-
-      settings = {
-        mainBar = {
-          layer = "top";
-          postition = "top";
-          height = 30;
-          modules-left = [
-            "hyprland/workspaces"
-          ];
-          modules-center = [
-            "hyprland/window"
-          ];
-          modules-right = [
-            "idle_inhibitor"
-            "battery"
-            "backlight"
-            "cpu"
-            "pulseaudio"
-            "clock"
-            "keyboard-state"
-            "tray"
-          ];
-
-          "hyprland/workspaces" = {
-            all-outputs = true;
-          };
-
-          "keyboard-state" = {
-            numlock = true;
-            capslock = true;
-            format = "{name} {icon}";
-            format-icons = {
-              locked = "";
-              unlocked = "";
-            };
-          };
-
-          "tray" = {
-            spacing = 10;
-          };
-
-          "clock" = {
-            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            format-alt = "{:%Y-%m-%d}";
-          };
-
-          "cpu" = {
-            format = "{usage}% ";
-            tooltip = false;
-          };
-
-          "backlight" = {
-            format = "{percent}% {icon}";
-            format-icons = [
-              ""
-              ""
-              ""
-              ""
-              ""
-              ""
-              ""
-              ""
-              ""
-            ];
-          };
-
-          "battery" = {
-            states = {
-              warning = 30;
-              critical = 15;
-            };
-            format = "{capacity}% {icon}";
-            format-full = "{capacity}% {icon}";
-            format-charging = "{capacity}% ";
-            format-plugged = "{capacity}% ";
-            format-alt = "{time} {icon}";
-            format-icons = [
-              ""
-              ""
-              ""
-              ""
-              ""
-            ];
-          };
-
-          "pulseaudio" = {
-            # scroll-step = 1; # %, can be a float
-            format = "{volume}% {icon} {format_source}";
-            format-bluetooth = "{volume}% {icon} {format_source}";
-            format-bluetooth-muted = " {icon} {format_source}";
-            format-muted = " {format_source}";
-            format-source = "{volume}% ";
-            format-source-muted = "";
-            format-icons = {
-              headphone = "";
-              hands-free = "";
-              headset = "";
-              phone = "";
-              portable = "";
-              car = "";
-              default = [
-                ""
-                ""
-                ""
-              ];
-            };
-            on-click = "pavucontrol";
-          };
-        }; # end mainBar
-      }; # end settings
-    }; # end waybar
   }; # end programs
 
   services = {
