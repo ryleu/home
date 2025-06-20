@@ -33,13 +33,6 @@
   programs = {
     thefuck.enable = true;
 
-    helix = {
-      enable = true;
-      settings = {
-        theme = "gruvbox";
-      };
-    };
-
     vim = {
       defaultEditor = true;
       extraConfig = ''
