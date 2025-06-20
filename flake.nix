@@ -2,8 +2,8 @@
   description = "Home Manager configuration of ryleu";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,10 +11,35 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      nixpkgs_unstable,
+      home-manager,
+      ...
+    }:
     let
-      amd64_pkgs = nixpkgs.legacyPackages."x86_64-linux";
-      arm64_pkgs = nixpkgs.legacyPackages."aarch64-linux";
+      # Helper to generate package sets for a given system.
+      pkgsFor = system: {
+        pkgs = nixpkgs.legacyPackages.${system};
+        unstable = nixpkgs_unstable.legacyPackages.${system};
+      };
+
+      amd64 = pkgsFor "x86_64-linux";
+      arm64 = pkgsFor "aarch64-linux";
+
+      # Helper to generate a home-manager configuration.
+      mkHome =
+        {
+          pkgs,
+          modules,
+        }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs.pkgs;
+          extraSpecialArgs = {
+            unstable_pkgs = pkgs.unstable;
+          };
+          inherit modules;
+        };
 
       baseModules = [
         ./home.nix
@@ -28,15 +53,11 @@
         ./packages/desktop.nix
         ./packages/fonts.nix
       ];
-      default = home-manager.lib.homeManagerConfiguration {
-        pkgs = amd64_pkgs;
-        modules = baseModules ++ guiModules;
-      };
     in
     {
       homeConfigurations = {
-        "ryleu@barely-better" = home-manager.lib.homeManagerConfiguration {
-          pkgs = amd64_pkgs;
+        "ryleu@barely-better" = mkHome {
+          pkgs = amd64;
           modules =
             baseModules
             ++ guiModules
@@ -44,15 +65,16 @@
               ./hosts/barely-better.nix
             ];
         };
-        "ryleu@mathrock" = default;
-        "ryleu@ripi" = home-manager.lib.homeManagerConfiguration {
-          pkgs = arm64_pkgs;
-          modules = baseModules ++ [
-            ./hosts/ripi.nix
-          ];
+        "ryleu@mathrock" = mkHome {
+          pkgs = amd64;
+          modules = baseModules ++ guiModules ++ [ ./hosts/barely-better.nix ];
         };
-        "ryleu@rectangle" = home-manager.lib.homeManagerConfiguration {
-          pkgs = amd64_pkgs;
+        "ryleu@ripi" = mkHome {
+          pkgs = arm64;
+          modules = baseModules ++ [ ./hosts/ripi.nix ];
+        };
+        "ryleu@rectangle" = mkHome {
+          pkgs = amd64;
           modules =
             baseModules
             ++ guiModules
@@ -60,17 +82,13 @@
               ./hosts/rectangle.nix
             ];
         };
-        "ryleu@redoak" = home-manager.lib.homeManagerConfiguration {
-          pkgs = amd64_pkgs;
-          modules = baseModules ++ [
-            ./hosts/redoak.nix
-          ];
+        "ryleu@redoak" = mkHome {
+          pkgs = amd64;
+          modules = baseModules ++ [ ./hosts/redoak.nix ];
         };
-        "ryleu@ivy" = home-manager.lib.homeManagerConfiguration {
-          pkgs = amd64_pkgs;
-          modules = baseModules ++ [
-            ./hosts/redoak.nix
-          ];
+        "ryleu@ivy" = mkHome {
+          pkgs = amd64;
+          modules = baseModules ++ [ ./hosts/redoak.nix ];
         };
       };
     };
