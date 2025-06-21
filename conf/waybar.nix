@@ -1,4 +1,4 @@
-{ config, font, ... }:
+{ font, ... }:
 
 let
   fa = text: "<span font_family='Font Awesome 6 Free'>${text}</span>";
