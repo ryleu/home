@@ -1,17 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, font, ... }:
 
-let
-  monoFont = "FiraCode Nerd Font";
-  fontFeatures = [
-    "liga"
-    "calt"
-    "cv01"
-    "cv02"
-    "cv04"
-    "ss01"
-    "ss06"
-  ];
-in
 {
   home = {
     packages = with pkgs; [
@@ -24,12 +12,12 @@ in
       zed-editor
       vesktop
       vscode
-      (python312.withPackages (ps: [
-        ps.numpy
-        ps.jupyter
-        ps.uv
-        ps.pip
-        ps.matplotlib
+      (python312.withPackages (py: [
+        py.numpy
+        py.jupyter
+        py.uv
+        py.pip
+        py.matplotlib
       ]))
       hugin
       qgis
@@ -64,7 +52,7 @@ in
           map (feature: {
             name = feature;
             value = true;
-          }) fontFeatures
+          }) font.mono.features
         );
       in
       {
@@ -91,9 +79,9 @@ in
           vim_mode = true;
           ui_font_size = 16;
           theme = {
-            mode = "system";
+            mode = "dark";
             light = "One Light";
-            dark = "One Dark";
+            dark = "Gruvbox Dark";
           };
           languages = {
             "Nix" = {
@@ -104,10 +92,10 @@ in
             };
           };
           buffer_font_size = 16;
-          buffer_font_family = monoFont;
+          buffer_font_family = font.mono.family;
           buffer_font_features = zedFontFeatures;
           terminal = {
-            font_family = monoFont;
+            font_family = font.mono.family;
             font_features = zedFontFeatures;
             env = {
               "TERM" = "xterm-256color";
@@ -119,13 +107,15 @@ in
     kitty = {
       enable = true;
       font = {
-        name = monoFont;
+        name = font.mono.family;
         size = 13;
       };
       settings = {
         disable_ligatures = "cursor";
         font_family =
-          "family=\"${monoFont}\" features=\"" + (builtins.concatStringsSep " +" fontFeatures) + "\"";
+          "family=\"${font.mono.family}\" features=\""
+          + (builtins.concatStringsSep " +" font.mono.features)
+          + "\"";
         notify_on_cmd_finish = "invisible";
       };
       shellIntegration = {

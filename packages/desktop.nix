@@ -1,17 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, font, ... }:
 
-let
-  monoFont = "FiraCode Nerd Font";
-  fontFeatures = [
-    "liga"
-    "calt"
-    "cv01"
-    "cv02"
-    "cv04"
-    "ss01"
-    "ss06"
-  ];
-in
 {
   home = {
     packages = with pkgs; [
@@ -40,7 +28,7 @@ in
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ monoFont ];
+      monospace = [ font.mono.family ];
     };
   };
 
