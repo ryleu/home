@@ -21,6 +21,7 @@
     nvtopPackages.full
     eza
     aria2
+    tmux
   ];
 
   programs = {
