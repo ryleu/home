@@ -207,14 +207,14 @@ in
           "$mainMod, R, exec, $menu"
           "$mainMod, P, pseudo," # dwindle
           "$mainMod, J, togglesplit," # dwindle
-          "$mainMod, L, exec, hyprlock --immediate"
+          "$mainMod SHIFT, L, exec, hyprlock --immediate"
           "$mainMod, T, exec, $touchpadScript" # Add this line
 
-          # Move focus with mainMod + arrow keys
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
+          # Move focus with mainMod + H J K L
+          "$mainMod, H, movefocus, l"
+          "$mainMod, J, movefocus, d"
+          "$mainMod, K, movefocus, u"
+          "$mainMod, L, movefocus, r"
 
           # Scroll through existing workspaces with mainMod + scroll
           "$mainMod, mouse_down, workspace, e+1"
