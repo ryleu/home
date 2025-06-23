@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     gh
+    please-cli
     nix-index
     nixd
     nil
