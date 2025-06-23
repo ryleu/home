@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    jq
     gh
     please-cli
     nix-index
