@@ -96,7 +96,7 @@
         };
         "ryleu@rectangle" = mkHome {
           pkgs = amd64;
-          modules = guiModules ++ [ ./hosts/desktop.nix ./hosts/server.nix ];
+          modules = guiModules ++ [ ./hosts/rectangle.nix ./hosts/server.nix ];
         };
         "ryleu@redoak" = mkHome {
           pkgs = amd64;
