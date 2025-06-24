@@ -57,6 +57,11 @@
                 family = "Noto Serif";
                 features = [ ];
               };
+              emoji = {
+                family = "Noto Color Emoji";
+                features = [ ];
+              };
+              fallback = "Unifont";
             };
 
             unstable_pkgs = pkgs.unstable;
@@ -96,7 +101,10 @@
         };
         "ryleu@rectangle" = mkHome {
           pkgs = amd64;
-          modules = guiModules ++ [ ./hosts/rectangle.nix ./hosts/server.nix ];
+          modules = guiModules ++ [
+            ./hosts/rectangle.nix
+            ./hosts/server.nix
+          ];
         };
         "ryleu@redoak" = mkHome {
           pkgs = amd64;
