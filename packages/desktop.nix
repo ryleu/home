@@ -11,17 +11,15 @@
       adwaita-qt6
       adwaita-qt
     ];
-  };
 
-  # TODO: figure out why this breaks the cursor theme on rectangle
-  #   pointerCursor = {
-  #     name = "phinger-cursors-light";
-  #     package = pkgs.phinger-cursors;
-  #     size = 24;
-  #     gtk.enable = true;
-  #     x11.enable = true;
-  #   };
-  # };
+    pointerCursor = {
+      name = "phinger-cursors-light";
+      package = pkgs.phinger-cursors;
+      size = 24;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+  };
 
   fonts.fontconfig = {
     enable = true;
