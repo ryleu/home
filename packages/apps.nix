@@ -3,6 +3,7 @@
 {
   home = {
     packages = with pkgs; [
+      signal-desktop
       qbittorrent
       krita
       vlc
