@@ -13,6 +13,7 @@
       zed-editor
       vesktop
       vscode
+      code-cursor
       (python312.withPackages (py: [
         py.numpy
         py.jupyter
