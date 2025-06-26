@@ -119,6 +119,14 @@ in
             ];
           };
           on-click = "pavucontrol";
+        }; # end pulseaudio
+
+        "idle_inhibitor" = {
+          format = "{icon}";
+          format-icons = {
+            activated = fa "";
+            deactivated = fa "";
+          };
         };
       }; # end mainBar
     }; # end settings
