@@ -65,6 +65,7 @@ in
 
         "backlight" = {
           format = "{percent}% {icon}";
+          tooltip-format = "{percent}% brightness";
           format-icons = [
             (fa "")
             (fa "")
