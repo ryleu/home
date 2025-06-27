@@ -54,8 +54,20 @@ in
         };
 
         "clock" = {
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format-alt = "{:%Y-%m-%d}";
+          format = "{:%R %Z}";
+          format-alt = "{:%R %Y-%m-%d %Z}";
+          tooltip-format = "<big>{:%A, %B %d}</big>\n<tt><small>{calendar}</small></tt>";
+        };
+        "clock: calendar" = {
+          mode = "month";
+          weeks-pos = "";
+        };
+        "clock: calendar: format" = {
+          months = "";
+          days = "";
+          weeks = "{:%U}";
+          weekdays = "";
+          today = "<b><u>{}</b></u>";
         };
 
         "cpu" = {
