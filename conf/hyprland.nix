@@ -26,10 +26,10 @@ in
       # Autostart necessary processes (like notifications daemons, status bars, etc.)
       exec-once = [
         "nm-applet"
-        "systemctl --user start waybar.service"
-        "systemctl --user start hypridle.service"
-        "systemctl --user start hyprpaper.service"
-        "systemctl --user start hyprpolkitagent.service"
+        "systemctl --user restart waybar.service"
+        "systemctl --user restart hypridle.service"
+        "systemctl --user restart hyprpaper.service"
+        "systemctl --user restart hyprpolkitagent.service"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
