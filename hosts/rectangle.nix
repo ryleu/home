@@ -1,7 +1,11 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services.mako.settings.output = "DP-2";
+
+  home.packages = with pkgs; [
+    alvr
+  ];
 
   wayland.windowManager.hyprland = {
     settings = {
