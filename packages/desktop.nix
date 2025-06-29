@@ -1,4 +1,9 @@
-{ pkgs, font, ... }:
+{
+  pkgs,
+  font,
+  cursor,
+  ...
+}:
 
 {
   home = {
@@ -13,10 +18,10 @@
       adwaita-qt
     ];
 
-    pointerCursor = {
-      name = "phinger-cursors-light";
-      package = pkgs.phinger-cursors;
-      size = 24;
+    pointerCursor = with cursor; {
+      inherit name;
+      inherit package;
+      inherit size;
       gtk.enable = true;
       x11.enable = true;
     };

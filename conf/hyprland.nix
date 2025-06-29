@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, cursor, ... }:
 
 let
   wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/airplane_suitcase.png";
@@ -30,6 +30,7 @@ in
         "systemctl --user restart hypridle.service"
         "systemctl --user restart hyprpaper.service"
         "systemctl --user restart hyprpolkitagent.service"
+        "hyprctl setcursor '${cursor.name}' ${builtins.toString cursor.size}"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/

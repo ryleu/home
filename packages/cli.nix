@@ -22,6 +22,7 @@
     eza
     aria2
     tmux
+    packwiz
   ];
 
   programs = {
