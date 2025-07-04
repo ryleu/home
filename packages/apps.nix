@@ -3,6 +3,7 @@
 {
   home = {
     packages = with pkgs; [
+      calibre
       signal-desktop
       qbittorrent
       krita
