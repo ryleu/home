@@ -3,6 +3,7 @@
 {
   home = {
     packages = with pkgs; [
+      dolphin-emu
       calibre
       signal-desktop
       qbittorrent
