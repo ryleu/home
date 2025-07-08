@@ -26,6 +26,7 @@ in
       # Autostart necessary processes (like notifications daemons, status bars, etc.)
       exec-once = [
         "nm-applet"
+        "blueman-applet"
         "systemctl --user restart waybar.service"
         "systemctl --user restart hypridle.service"
         "systemctl --user restart hyprpaper.service"
