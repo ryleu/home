@@ -1,7 +1,7 @@
 { pkgs, cursor, ... }:
 
 let
-  wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/airplane_suitcase.png";
+  wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/mountains_colin_watts.jpg";
 in
 {
   wayland.windowManager.hyprland = {
