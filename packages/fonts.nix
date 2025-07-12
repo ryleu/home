@@ -11,5 +11,6 @@
     comic-mono
     comic-neue
     font-awesome
+    noto-fonts
   ];
 }

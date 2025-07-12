@@ -16,6 +16,11 @@
       libreoffice
       adwaita-qt6
       adwaita-qt
+      glib
+      gsettings-desktop-schemas
+      xdg-desktop-portal
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gnome
     ];
 
     pointerCursor = with cursor; {
@@ -24,6 +29,26 @@
       inherit size;
       gtk.enable = true;
       x11.enable = true;
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      font-name = font.sans.family + " 10";
+      monospace-font-name = font.mono.family + " 10";
+      color-scheme = pkgs.lib.mkDefault "prefer-dark";
+    };
+  };
+
+  xdg = {
+    portal = {
+      enable = true;
+      config = {
+        common.default = [
+          "hyprland"
+          "gtk"
+        ];
+      };
     };
   };
 
