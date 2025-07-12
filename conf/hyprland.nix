@@ -1,7 +1,7 @@
 { pkgs, cursor, ... }:
 
 let
-  wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/mountains_colin_watts.jpg";
+  wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/luca-bravo.jpg";
 in
 {
   wayland.windowManager.hyprland = {
@@ -334,7 +334,7 @@ in
       }; # end settings
     }; # end hypridle
 
-    hyprpaper = {
+    hyprpaper = pkgs.lib.mkDefault {
       enable = true;
       settings = {
         ipc = "on";
