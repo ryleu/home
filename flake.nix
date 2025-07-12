@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +15,7 @@
     {
       nixpkgs,
       nixpkgs-unstable,
+      zen-browser,
       home-manager,
       ...
     }:
@@ -70,6 +72,7 @@
             };
 
             unstable_pkgs = pkgs.unstable;
+            zen_browser = zen-browser;
           };
           inherit modules;
         };
@@ -83,6 +86,7 @@
         ./conf/hyprland.nix
         ./conf/waybar.nix
         ./conf/sway.nix
+        ./conf/zen.nix
         ./packages/apps.nix
         ./packages/desktop.nix
         ./packages/fonts.nix
