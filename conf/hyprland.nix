@@ -27,6 +27,7 @@ in
       exec-once = [
         "nm-applet"
         "blueman-applet"
+        "systemctl --user restart mako.service"
         "systemctl --user restart waybar.service"
         "systemctl --user restart hypridle.service"
         "systemctl --user restart hyprpaper.service"
