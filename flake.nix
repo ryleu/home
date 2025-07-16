@@ -97,12 +97,12 @@
         "ryleu@barely-better" = mkHome {
           pkgs = amd64;
           modules = guiModules ++ [
-            ./hosts/laptop.nix
+            ./hosts/barely-better.nix
           ];
         };
         "ryleu@mathrock" = mkHome {
           pkgs = amd64;
-          modules = guiModules ++ [ ./hosts/laptop.nix ];
+          modules = guiModules ++ [ ];
         };
         "ryleu@ripi" = mkHome {
           pkgs = arm64;
