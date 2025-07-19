@@ -152,8 +152,8 @@ in
         kb_rules = "";
 
         follow_mouse = 1;
-
-        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+        accel_profile = "adaptive";
+        sensitivity = 0.2; # -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
           natural_scroll = true;

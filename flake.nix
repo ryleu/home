@@ -90,6 +90,7 @@
         ./packages/apps.nix
         ./packages/desktop.nix
         ./packages/fonts.nix
+        ./packages/work.nix
       ];
     in
     {
