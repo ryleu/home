@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    bun
     unzip
     jq
     gh
