@@ -1,4 +1,4 @@
-{ pkgs, font, ... }:
+{ pkgs, font, unstable_pkgs, ... }:
 
 {
   home = {

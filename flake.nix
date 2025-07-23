@@ -21,10 +21,26 @@
     }:
     let
       # Helper to generate package sets for a given system.
-      pkgsFor = system: {
-        pkgs = nixpkgs.legacyPackages.${system};
-        unstable = nixpkgs-unstable.legacyPackages.${system};
-      };
+      pkgsFor =
+        system:
+        let
+          config.allowUnfree = true;
+        in
+        {
+          pkgs = (
+            import nixpkgs {
+              inherit system;
+              inherit config;
+            }
+          );
+
+          unstable = (
+            import nixpkgs-unstable {
+              inherit system;
+              inherit config;
+            }
+          );
+        };
 
       amd64 = pkgsFor "x86_64-linux";
       arm64 = pkgsFor "aarch64-linux";
