@@ -2,6 +2,9 @@
 
 {
   home.packages = with pkgs; [
+    undollar
+    silver-searcher
+    ripgrep
     bun
     unzip
     jq
