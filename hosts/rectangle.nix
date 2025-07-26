@@ -27,6 +27,7 @@
 
   home.packages = with pkgs; [
     alvr
+    vintagestory
   ];
 
   wayland.windowManager.hyprland = {
@@ -37,5 +38,11 @@
         "HDMI-A-1,1920x1080@74.97Hz,2560x-480,1,transform,3"
       ];
     };
+  };
+
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "dotnet-runtime-7.0.20"
+    ];
   };
 }

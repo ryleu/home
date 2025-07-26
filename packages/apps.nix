@@ -3,7 +3,7 @@
 {
   home = {
     packages = with pkgs; [
-      dolphin-emu
+      unstable_pkgs.dolphin-emu
       calibre
       signal-desktop
       qbittorrent
