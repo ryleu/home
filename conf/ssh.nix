@@ -62,6 +62,13 @@
         identityFile = "~/.ssh/clucky";
         identitiesOnly = true;
       };
+
+      "spotipi" = {
+        hostname = "spotipi";
+        user = "ryleu";
+        identityFile = "~/.ssh/github";
+        identitiesOnly = true;
+      };
     };
   };
 }
