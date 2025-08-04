@@ -5,5 +5,6 @@
     slack
     dbeaver-bin
     code-cursor
+    mongodb-compass
   ];
 }
