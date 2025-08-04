@@ -13,7 +13,10 @@
   };
 
   programs = {
-    thefuck.enable = true;
+    thefuck = {
+      enable = true;
+      alias = "heck";
+    };
 
     vim = {
       defaultEditor = true;

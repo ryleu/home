@@ -69,6 +69,13 @@
         identityFile = "~/.ssh/github";
         identitiesOnly = true;
       };
+
+      "rectangle" = {
+        hostname = "rectangle";
+        user = "ryleu";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
+      };
     };
   };
 }
