@@ -7,7 +7,6 @@
     stateVersion = "25.05"; # do not change without first properly migrating your setup!
 
     sessionVariables = {
-      EDITOR = "vim";
       HYPHEN_INSENSITIVE = "true";
     };
   };
@@ -19,7 +18,6 @@
     };
 
     vim = {
-      defaultEditor = true;
       extraConfig = builtins.readFile ./conf/config.vim;
     };
 
@@ -40,7 +38,6 @@
           email = "69326171+ryleu@users.noreply.github.com";
           name = "ryleu";
         };
-        core.editor = "vim";
         init.defaultBranch = "main";
       };
     };

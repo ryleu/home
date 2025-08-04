@@ -13,7 +13,7 @@
       spotify
       prismlauncher
       brave
-      zed-editor
+      zed-editor-fhs
       vesktop
       vscode
       code-cursor

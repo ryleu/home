@@ -96,6 +96,7 @@
       baseModules = [
         ./home.nix
         ./conf/ssh.nix
+	./conf/nvim.nix
         ./packages/cli.nix
       ];
       guiModules = baseModules ++ [
