@@ -15,6 +15,7 @@
     nil
     wget
     cargo
+    gcc
     rustc
     rustfmt
     nix-search
