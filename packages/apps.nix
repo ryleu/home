@@ -16,7 +16,6 @@
       unstable_pkgs.zed-editor-fhs
       vesktop
       vscode
-      code-cursor
       (python312.withPackages (py: [
         py.numpy
         py.jupyter

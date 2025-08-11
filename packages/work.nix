@@ -1,10 +1,10 @@
-{ pkgs, font, ... }:
+{ pkgs, unstable_pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     slack
     dbeaver-bin
-    code-cursor
+    unstable_pkgs.code-cursor-fhs
     mongodb-compass
   ];
 }
