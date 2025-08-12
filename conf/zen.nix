@@ -1,6 +1,5 @@
 {
   zen_browser,
-  font,
   pkgs,
   ...
 }:
@@ -64,6 +63,10 @@
             "Value" = false;
             "Status" = "locked";
           };
+	  "middlemouse.paste" = {
+	    "Value" = false;
+	    "Status" = "locked";
+	  };
         };
         Permissions = {
           Autoplay = {
