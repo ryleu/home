@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   services.mako.settings.output = "eDP-1";
@@ -12,5 +12,11 @@
       "1, eDP-1"
       "10, HDMI-A-1"
     ];
+
+    # save battery
+    decoration = {
+      blur.enabled = lib.mkForce false;
+      shadow.enabled = lib.mkForce false;
+    };
   };
 }

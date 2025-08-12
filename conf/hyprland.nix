@@ -139,6 +139,7 @@ in
 
       # https://wiki.hyprland.org/Configuring/Variables/#misc
       misc = {
+      	middle_click_paste = false;
         force_default_wallpaper = 1;
         disable_hyprland_logo = false;
       };
@@ -160,7 +161,14 @@ in
           clickfinger_behavior = true;
           tap-to-click = true;
         };
+
       };
+      device = [
+        {
+          name = "logitech-optical-usb-mouse";
+          sensitivity = 1.0;
+        }
+      ];
 
       # https://wiki.hyprland.org/Configuring/Variables/#gestures
       gestures = {
