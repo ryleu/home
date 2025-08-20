@@ -35,6 +35,7 @@
       pavucontrol
       openscad
       bottles
+      netbeans
     ];
   };
 

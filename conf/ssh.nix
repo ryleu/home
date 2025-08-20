@@ -6,14 +6,12 @@
     addKeysToAgent = "yes";
     forwardAgent = true;
     compression = true;
+    extraConfig = ''
+      PreferredAuthentications publickey,password
+      IdentitiesOnly true
+      IdentityFile ~/.ssh/id_ed25519
+    '';
     matchBlocks = {
-      "*" = {
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-        extraOptions = {
-          PreferredAuthentications = "publickey,password";
-        };
-      };
       "github.com" = {
         hostname = "github.com";
         user = "git";
