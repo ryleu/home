@@ -57,6 +57,10 @@
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/2fas-two-factor-authentication/latest.xpi";
             installation_mode = "force_installed";
           };
+	  "tasksforcanvas@jtchengdev.com" = {
+	    install_url = "https://addons.mozilla.org/firefox/downloads/latest/tasks-for-canvas/latest.xpi";
+	    installation_mode = "force_installed";
+	  };
         };
         Preferences = {
           "browser.tabs.warnOnClose" = {
