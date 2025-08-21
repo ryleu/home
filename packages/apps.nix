@@ -36,6 +36,7 @@
       openscad
       bottles
       netbeans
+      element-desktop
     ];
   };
 
