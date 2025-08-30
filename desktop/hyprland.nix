@@ -1,8 +1,8 @@
-{ pkgs, cursor, ... }:
-
-let
-  wallpaperPath = "/home/ryleu/.config/home-manager/wallpaper/luca-bravo.jpg";
-in
+{
+  pkgs,
+  cursor,
+  ...
+}:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -14,23 +14,14 @@ in
         ", preferred, auto, 1"
       ];
 
-      # See https://wiki.hyprland.org/Configuring/Keywords/
-
       # Set programs that you use
       "$terminal" = "kitty";
       "$fileManager" = "nautilus";
-      "$menu" = "wofi --show drun";
       "$touchpadScript" =
         ''bash -c 'if hyprctl getoption input:touchpad:disable_while_typing | grep -q "int: 1"; then hyprctl keyword input:touchpad:disable_while_typing false ; else hyprctl keyword input:touchpad:disable_while_typing true ; fi' '';
 
       # Autostart necessary processes (like notifications daemons, status bars, etc.)
       exec-once = [
-        "nm-applet"
-        "blueman-applet"
-        "systemctl --user restart mako.service"
-        "systemctl --user restart waybar.service"
-        "systemctl --user restart hypridle.service"
-        "systemctl --user restart hyprpaper.service"
         "systemctl --user restart hyprpolkitagent.service"
         "hyprctl setcursor '${cursor.name}' ${builtins.toString cursor.size}"
       ];
@@ -38,98 +29,16 @@ in
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
 
       env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
+        "XCURSOR_SIZE,${builtins.toString cursor.size}"
+        "HYPRCURSOR_SIZE,${builtins.toString cursor.size}"
       ];
-
-      # Refer to https://wiki.hyprland.org/Configuring/Variables/
-
-      # https://wiki.hyprland.org/Configuring/Variables/#general
-      general = {
-        gaps_in = 3;
-        gaps_out = 12;
-
-        border_size = 2;
-
-        # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        # has to be quoted because of a certified Krill Issue (tm) on the part of the hypr devs
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-
-        # Set to true enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false;
-
-        # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-        allow_tearing = false;
-
-        layout = "dwindle";
-      }; # end general
-
-      # https://wiki.hyprland.org/Configuring/Variables/#decoration
-      decoration = {
-        rounding = 10;
-        # rounding_power = 2; # supported on latest git, not yet in nixpkgs
-
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-
-        shadow = {
-          enabled = true;
-          range = 4;
-          render_power = 3;
-          color = "rgba(1a1a1aee)";
-        };
-
-        # https://wiki.hyprland.org/Configuring/Variables/#blur
-        blur = {
-          enabled = true;
-          size = 3;
-          passes = 3;
-
-          vibrancy = 0.1696;
-        };
-      }; # end decoration
-
-      # https://wiki.hyprland.org/Configuring/Variables/#animations
-      animations = {
-        enabled = "yes, please :)";
-
-        # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-
-        bezier = [
-          "easeOutQuint,0.23,1,0.32,1"
-          "easeInOutCubic,0.65,0.05,0.36,1"
-          "linear,0,0,1,1"
-          "almostLinear,0.5,0.5,0.75,1.0"
-          "quick,0.15,0,0.1,1"
-        ];
-
-        animation = [
-          "global, 1, 10, default"
-          "border, 1, 5.39, easeOutQuint"
-          "windows, 1, 4.79, easeOutQuint"
-          "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
-          "windowsOut, 1, 1.49, linear, popin 87%"
-          "fadeIn, 1, 1.73, almostLinear"
-          "fadeOut, 1, 1.46, almostLinear"
-          "fade, 1, 3.03, quick"
-          "layers, 1, 3.81, easeOutQuint"
-          "layersIn, 1, 4, easeOutQuint, fade"
-          "layersOut, 1, 1.5, linear, fade"
-          "fadeLayersIn, 1, 1.79, almostLinear"
-          "fadeLayersOut, 1, 1.39, almostLinear"
-          "workspaces, 1, 1.94, almostLinear, fade"
-          "workspacesIn, 1, 1.21, almostLinear, fade"
-          "workspacesOut, 1, 1.94, almostLinear, fade"
-        ];
-      }; # end animations
 
       # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
       dwindle = {
         pseudotile = false;
         preserve_split = false;
         force_split = 2;
-        split_width_multiplier = 1.778; # 16:9
+        split_width_multiplier = 1.5; # 16:9
       };
 
       # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
@@ -139,7 +48,7 @@ in
 
       # https://wiki.hyprland.org/Configuring/Variables/#misc
       misc = {
-      	middle_click_paste = false;
+        middle_click_paste = false;
         force_default_wallpaper = 1;
         disable_hyprland_logo = false;
       };
@@ -175,13 +84,6 @@ in
         workspace_swipe = true;
       };
 
-      # Example per-device config
-      # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
-      # device = {
-      #     name = "epic-mouse-v1";
-      #     sensitivity = -0.5;
-      # };
-
       # See https://wiki.hyprland.org/Configuring/Keywords/
       "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
 
@@ -216,7 +118,6 @@ in
           "$mainMod, V, togglefloating,"
           "$mainMod, M, fullscreen, 1"
           "$mainMod, F, fullscreen, 0"
-          "$mainMod, R, exec, $menu"
           "$mainMod, P, pseudo," # dwindle
           "$mainMod, J, togglesplit," # dwindle
           "$mainMod SHIFT, L, exec, hyprlock --immediate"
@@ -231,6 +132,9 @@ in
           # Scroll through existing workspaces with mainMod + scroll
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
+
+          # caelestia stuff
+          "$mainMod, R, global, caelestia:showall"
 
           # grimblast
           ", PRINT, exec, grimblast --notify copysave output ~/Pictures"
@@ -318,44 +222,7 @@ in
 
   }; # end programs
 
-  services = {
-    hypridle = {
-      enable = true;
-
-      settings = {
-        general = {
-          after_sleep_cmd = "hyprctl dispatch dpms on";
-          ignore_dbus_inhibit = false;
-          lock_cmd = "hyprlock";
-        };
-
-        listener = [
-          {
-            timeout = 300;
-            on-timeout = "hyprlock";
-          }
-          {
-            timeout = 600;
-            on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
-          }
-        ];
-      }; # end settings
-    }; # end hypridle
-
-    hyprpaper = pkgs.lib.mkDefault {
-      enable = true;
-      settings = {
-        ipc = "on";
-        splash = false;
-        preload = [
-          "${wallpaperPath}"
-        ];
-
-        wallpaper = [
-          ",${wallpaperPath}"
-        ];
-      };
-    };
-  }; # end services
+  home.packages = with pkgs; [
+      playerctl
+    ];
 }

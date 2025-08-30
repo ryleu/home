@@ -11,7 +11,6 @@
       hyprpolkitagent
       waybar
       grimblast
-      wofi
       networkmanagerapplet
       libreoffice
       adwaita-qt6

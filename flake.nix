@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -20,6 +24,7 @@
       nixpkgs-unstable,
       zen-browser,
       home-manager,
+      caelestia-shell,
       ...
     }:
     let
@@ -43,6 +48,8 @@
               inherit config;
             }
           );
+
+          caelestia = caelestia-shell;
         };
 
       amd64 = pkgsFor "x86_64-linux";
@@ -91,6 +98,7 @@
             };
 
             unstable_pkgs = pkgs.unstable;
+            caelestia = pkgs.caelestia;
             zen_browser = zen-browser;
           };
           inherit modules;
@@ -99,13 +107,11 @@
       baseModules = [
         ./home.nix
         ./conf/ssh.nix
-	./conf/nvim.nix
+        ./conf/nvim.nix
         ./packages/cli.nix
       ];
       guiModules = baseModules ++ [
-        ./conf/hyprland.nix
-        ./conf/waybar.nix
-        ./conf/sway.nix
+        ./desktop
         ./conf/zen.nix
         ./packages/apps.nix
         ./packages/desktop.nix
