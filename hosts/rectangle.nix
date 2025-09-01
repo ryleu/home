@@ -3,26 +3,6 @@
 {
   services = {
     mako.settings.output = "DP-3";
-
-    hyprpaper = let
-      monitor1 = "/home/ryleu/.config/home-manager/wallpaper/wallpaper_monitor_1.png";
-      monitor2 = "/home/ryleu/.config/home-manager/wallpaper/wallpaper_monitor_2.png";
-    in {
-      enable = true;
-      settings = {
-        ipc = "on";
-        splash = false;
-        preload = [ 
-          "${monitor1}"
-          "${monitor2}"
-        ];
-
-        wallpaper = [
-          "DP-3,${monitor1}"
-          "HDMI-A-1,${monitor2}"
-        ];
-      };
-    };
   };
 
   home.packages = with pkgs; [
