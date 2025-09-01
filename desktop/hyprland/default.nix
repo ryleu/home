@@ -4,6 +4,12 @@
   ...
 }:
 {
+  imports = [
+    ./colors.nix
+    ./animations.nix
+    ./decoration.nix
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -223,6 +229,6 @@
   }; # end programs
 
   home.packages = with pkgs; [
-      playerctl
-    ];
+    playerctl
+  ];
 }

@@ -1,4 +1,4 @@
 { ... }:
 {
-  imports = [ ./hyprland.nix ./caelestia ];
+  imports = [ ./hyprland ./caelestia ];
 }
