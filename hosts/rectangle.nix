@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  services = {
-    mako.settings.output = "DP-3";
-  };
-
   home.packages = with pkgs; [
     davinci-resolve
     alvr

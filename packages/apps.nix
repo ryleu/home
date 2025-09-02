@@ -70,20 +70,4 @@
       themeFile = "gruvbox-dark";
     };
   };
-
-  services = {
-    mako = {
-      enable = true;
-      settings = {
-        actions = true;
-        anchor = "top-right";
-        background-color = "#282828FF";
-        border-color = "#00FF99FF";
-        text-color = "#EBDBB2FF";
-        border-radius = 10;
-        border-size = 2;
-        default-timeout = 3000;
-      };
-    };
-  };
 }
