@@ -10,6 +10,9 @@
       systemd.enable = true;
       settings = {
         paths.wallpaperDir = "~/Pictures/Wallpapers";
+	services = {
+	  useTwelveHourClock = false;
+	};
       };
       cli = {
         enable = true;
