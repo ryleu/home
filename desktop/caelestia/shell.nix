@@ -15,6 +15,15 @@
         enable = true;
         settings = {
           theme.enableGtk = true;
+
+	  background = {
+	    enabled = true;
+
+	    visualiser = {
+	      enabled = true;
+	      autoHide = true;
+	    };
+          };
         };
       };
     };
