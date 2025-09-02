@@ -1,4 +1,4 @@
 { ... }:
 {
-  imports = [ ./hyprland ./caelestia ];
+  imports = [ ./hyprland ./caelestia ./images ];
 }
