@@ -15,11 +15,11 @@
 
         listener = [
           {
-            timeout = 120; # 2 minutes
-            on-timeout = "loginctl lock-session";
+            timeout = 300; # 5 minutes
+            on-timeout = "hyprlock";
           }
           {
-            timeout = 300; # 5 minutes
+            timeout = 600; # 10 minutes
             on-timeout = "bash -c 'playerctl -a status 2>/dev/null || systemctl suspend'";
           }
         ];
