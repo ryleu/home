@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home = {
@@ -72,6 +72,9 @@
           };
         }
       ];
+      initContent = lib.mkAfter ''
+        cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
+      '';
     };
 
     eza = {

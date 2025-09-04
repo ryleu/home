@@ -67,7 +67,7 @@
       shellIntegration = {
         enableZshIntegration = true;
       };
-      themeFile = "gruvbox-dark";
+      # themeFile = "gruvbox-dark";
     };
   };
 }
