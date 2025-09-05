@@ -1,4 +1,9 @@
-{ pkgs, unstable_pkgs, ... }:
+{
+  lib,
+  pkgs,
+  unstable_pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -16,4 +21,11 @@
       ];
     };
   };
+
+  services.hypridle.settings.listener = [
+    {
+      timeout = 600; # 10 minutes
+      on-timeout = "hyprlock";
+    }
+  ];
 }

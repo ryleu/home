@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   # This file handles power management and auto locking
 
@@ -13,7 +13,7 @@
           after_sleep_cmd = "hyprctl dispatch dpms on";
         };
 
-        listener = [
+        listener = lib.mkDefault [
           {
             timeout = 300; # 5 minutes
             on-timeout = "hyprlock";
