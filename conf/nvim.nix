@@ -50,14 +50,14 @@
               filetypes = [ "rust" ];
             };
 
-	    nix = {
-	      command = "nil";
-	      args = [];
-	      rootPatterns = [
-	        "*.nix"
-	      ];
-	      filetypes = [ "nix" ];
-	    };
+            nix = {
+              command = "nil";
+              args = [ ];
+              rootPatterns = [
+                "*.nix"
+              ];
+              filetypes = [ "nix" ];
+            };
           };
           coc.preferences.formatOnType = true;
         };
