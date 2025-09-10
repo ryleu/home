@@ -58,6 +58,7 @@
         middle_click_paste = false;
         force_default_wallpaper = 1;
         disable_hyprland_logo = false;
+	enable_anr_dialog = false;
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#input

@@ -113,10 +113,7 @@
       guiModules = baseModules ++ [
         ./desktop
         ./conf/zen.nix
-        ./packages/apps.nix
-        ./packages/desktop.nix
-        ./packages/fonts.nix
-        ./packages/work.nix
+        ./packages
       ];
     in
     {
