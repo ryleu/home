@@ -53,9 +53,6 @@
             nix = {
               command = "nil";
               args = [ ];
-              rootPatterns = [
-                "*.nix"
-              ];
               filetypes = [ "nix" ];
             };
           };
