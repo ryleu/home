@@ -24,7 +24,6 @@
     wl-clipboard
     fastfetch
     htop
-    nvtopPackages.full
     eza
     aria2
     tmux
