@@ -17,6 +17,11 @@
       alias = "heck";
     };
 
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     vim = {
       extraConfig = builtins.readFile ./conf/config.vim;
     };
@@ -54,11 +59,6 @@
       };
       shellAliases = {
         la = "ls -alF";
-      };
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" ];
-        theme = "robbyrussell";
       };
       plugins = [
         {
