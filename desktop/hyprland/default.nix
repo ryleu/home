@@ -128,7 +128,7 @@
           "$mainMod, F, fullscreen, 0"
           "$mainMod, P, pseudo," # dwindle
           "$mainMod, J, togglesplit," # dwindle
-          "$mainMod SHIFT, L, exec, hyprlock --immediate"
+          "$mainMod SHIFT, L, global, caelestia:lock"
           "$mainMod, T, exec, $touchpadScript" # Add this line
 
           # Move focus with mainMod + H J K L
@@ -142,13 +142,12 @@
           "$mainMod, mouse_up, workspace, e-1"
 
           # caelestia stuff
-          "$mainMod, R, global, caelestia:showall"
+          "$mainMod, R, global, caelestia:launcher"
 
-          # grimblast
-          ", PRINT, exec, grimblast --notify copysave output ~/Pictures"
-          "SUPER, PRINT, exec, grimblast --notify copysave screen ~/Pictures"
-          "SHIFT, PRINT, exec, grimblast --notify copysave area ~/Pictures"
-          "CTRL, PRINT, exec, grimblast --notify copysave active ~/Pictures"
+          # screenshot
+          ", PRINT, exec, caelestia screenshot"
+          "SHIFT, PRINT, exec, caelestia screenshot -r"
+          "CTRL, PRINT, exec, caelestia screenshot -r"
         ]
         ++ genKeybinds 1; # call the function to generate keybinds for workspaces 1 -> 10
 
