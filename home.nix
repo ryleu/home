@@ -59,6 +59,7 @@
       };
       shellAliases = {
         la = "ls -alF";
+	":q" = "exit";
       };
       plugins = [
         {
