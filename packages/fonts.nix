@@ -12,5 +12,6 @@
     comic-neue
     font-awesome
     noto-fonts
+    rubik
   ];
 }

@@ -38,6 +38,7 @@
       env = [
         "XCURSOR_SIZE,${builtins.toString cursor.size}"
         "HYPRCURSOR_SIZE,${builtins.toString cursor.size}"
+	"ELECTRON_OZONE_PLATFORM_HINT,wayland"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
