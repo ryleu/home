@@ -28,7 +28,6 @@
       rstudio
       zotero
       logseq
-      jetbrains.idea-community-src
       gabutdm
       prusa-slicer
       bambu-studio
