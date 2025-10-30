@@ -15,8 +15,10 @@
       brave
       unstable_pkgs.zed-editor-fhs
       vesktop
-      vscode
+      vscode-fhs
       (python312.withPackages (py: [
+        py.bpython
+	ncurses
         py.numpy
         py.jupyter
         py.uv
