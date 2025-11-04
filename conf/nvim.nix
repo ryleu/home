@@ -35,6 +35,9 @@
         coc-json
         coc-docker
         coc-git
+	render-markdown-nvim
+
+        nvim-treesitter.withAllGrammars
       ];
 
       coc = {
