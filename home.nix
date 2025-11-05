@@ -74,7 +74,7 @@
         }
       ];
       initContent = lib.mkAfter ''
-        cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
+        [[ "$TERM" = "xterm-kitty" ]] && cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
       '';
     };
 
