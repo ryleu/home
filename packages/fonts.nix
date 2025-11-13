@@ -13,5 +13,7 @@
     font-awesome
     noto-fonts
     rubik
+    corefonts
+    vista-fonts
   ];
 }
