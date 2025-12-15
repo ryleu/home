@@ -15,5 +15,6 @@
     rubik
     corefonts
     vista-fonts
+    carlito
   ];
 }

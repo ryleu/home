@@ -14,14 +14,6 @@
         };
 
         listener = lib.mkDefault [
-          {
-            timeout = 300; # 5 minutes
-            on-timeout = "hyprlock";
-          }
-          {
-            timeout = 600; # 10 minutes
-            on-timeout = "bash -c 'playerctl -a status 2>/dev/null || systemctl suspend'";
-          }
         ];
       };
     }; # end hypridle

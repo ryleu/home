@@ -54,6 +54,13 @@
         identitiesOnly = true;
       };
 
+      "monument.lan" = {
+        hostname = "192.168.1.210";
+        user = "truenas_admin";
+        identityFile = "~/.ssh/monument";
+        identitiesOnly = true;
+      };
+
       "clucky" = {
         hostname = "192.168.1.69";
         user = "clucky";
