@@ -27,7 +27,6 @@
       ]))
       hugin
       qgis
-      rstudio
       zotero
       logseq
       gabutdm
