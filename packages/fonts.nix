@@ -7,7 +7,6 @@
     unifont
     source-code-pro
     corefonts
-    vistafonts
     comic-mono
     comic-neue
     font-awesome

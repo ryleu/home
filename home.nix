@@ -12,10 +12,7 @@
   };
 
   programs = {
-    thefuck = {
-      enable = true;
-      alias = "heck";
-    };
+    pay-respects.enable = true;
 
     starship = {
       enable = true;
