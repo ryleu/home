@@ -13,7 +13,7 @@
   };
 
   programs = {
-    git.extraConfig.core.editor = "nvim";
+    git.settings.core.editor = "nvim";
 
     neovim = {
       enable = true;

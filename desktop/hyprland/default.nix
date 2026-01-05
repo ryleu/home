@@ -88,10 +88,10 @@
         }
       ];
 
-      # https://wiki.hyprland.org/Configuring/Variables/#gestures
-      gestures = {
-        workspace_swipe = true;
-      };
+      # https://wiki.hypr.land/Configuring/Gestures/
+      gesture = [
+        "3, horizontal, workspace"
+      ];
 
       # See https://wiki.hyprland.org/Configuring/Keywords/
       "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier

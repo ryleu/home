@@ -3,15 +3,18 @@
 {
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
-    forwardAgent = true;
-    compression = true;
+    enableDefaultConfig = false;
     extraConfig = ''
       PreferredAuthentications publickey,password
       IdentitiesOnly true
       IdentityFile ~/.ssh/id_ed25519
     '';
     matchBlocks = {
+      "*" = {
+        addKeysToAgent = "yes";
+        forwardAgent = true;
+        compression = true;
+      };
       "github.com" = {
         hostname = "github.com";
         user = "git";

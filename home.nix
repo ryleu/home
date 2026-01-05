@@ -31,8 +31,7 @@
 
     git = {
       enable = true;
-      delta.enable = true;
-      extraConfig = {
+      settings = {
         commit.gpgsign = true;
         gpg.format = "ssh";
         user = {
@@ -42,6 +41,11 @@
         };
         init.defaultBranch = "main";
       };
+    };
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
     };
 
     zsh = {
