@@ -5,7 +5,8 @@ let
   #
 
   extra-path = with pkgs; [
-    #dotnetCorePackages.sdk_6_0
+    #dotnetCorePackages.sdk_9_0
+    dotnetCorePackages.dotnet_9.sdk
     dotnetPackages.Nuget
     mono
     msbuild
@@ -39,12 +40,30 @@ let
   });
 in
 {
-  home.packages = [
-    (pkgs.unityhub.override {
-      extraPkgs = p: [
-        # put any extra needed packages here
-      ];
-    })
-    rider
-  ];
+  home = {
+    packages = [
+      (pkgs.unityhub.override {
+        extraPkgs = p: [
+          # put any extra needed packages here
+        ];
+      })
+      rider
+    ];
+
+    file = {
+      ".local/share/applications/jetbrains-rider.desktop".source =
+        let
+          desktopFile = pkgs.makeDesktopItem {
+            name = "jetbrains-rider";
+            desktopName = "Rider";
+            exec = "\"${rider}/bin/rider\"";
+            icon = "rider";
+            type = "Application";
+            # Don't show desktop icon in search or run launcher
+            extraConfig.NoDisplay = "true";
+          };
+        in
+        "${desktopFile}/share/applications/jetbrains-rider.desktop";
+    };
+  };
 }
