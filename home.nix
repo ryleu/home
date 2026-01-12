@@ -8,6 +8,7 @@
 
     sessionVariables = {
       HYPHEN_INSENSITIVE = "true";
+      SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
     };
   };
 
@@ -90,6 +91,15 @@
     home-manager = {
       enable = true;
     };
+  };
+
+  services = {
+    gnome-keyring = {
+      enable = true;
+      components = [ "secrets" ];
+    };
+
+    ssh-agent.enable = true;
   };
 
   nixpkgs.config = {
