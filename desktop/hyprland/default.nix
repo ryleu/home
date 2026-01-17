@@ -157,9 +157,9 @@
           "$mainMod, R, exec, ${pkgs.rofi}/bin/rofi -show drun"
 
           # screenshot
-          ", PRINT, exec, caelestia screenshot"
-          "SHIFT, PRINT, exec, caelestia screenshot -r"
-          "CTRL, PRINT, exec, caelestia screenshot -r"
+          ", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -z -m active --clipboard-only"
+          "SHIFT, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -z -m region --clipboard-only"
+          "CTRL, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -z -m window --clipboard-only"
         ]
         ++ genKeybinds 1; # call the function to generate keybinds for workspaces 1 -> 10
 
