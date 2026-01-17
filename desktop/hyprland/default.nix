@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ./colors.nix
+    #./colors.nix
     ./animations.nix
     ./decoration.nix
     ./power-management.nix
@@ -32,6 +32,17 @@
         "systemctl --user restart hyprpolkitagent.service"
         "hyprctl setcursor '${cursor.name}' ${builtins.toString cursor.size}"
       ];
+
+      general = {
+        gaps_in = 0;
+	gaps_out = 0;
+	border_size = 1;
+      };
+
+      decoration = {
+        rounding = 0;
+	rounding_power = 0;
+      };
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
 
@@ -142,8 +153,8 @@
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
 
-          # caelestia stuff
-          "$mainMod, R, global, caelestia:launcher"
+          # app runner
+          "$mainMod, R, exec, ${pkgs.rofi}/bin/rofi -show drun"
 
           # screenshot
           ", PRINT, exec, caelestia screenshot"

@@ -29,16 +29,16 @@
     "$shadowColour" = "rgba($surfaced4)";
 
     # Gaps
-    "$workspaceGaps" = "20";
-    "$windowGapsIn" = "10";
-    "$windowGapsOut" = "40";
-    "$singleWindowGapsOut" = "20";
+    "$workspaceGaps" = "0";
+    "$windowGapsIn" = "0";
+    "$windowGapsOut" = "0";
+    "$singleWindowGapsOut" = "0";
 
     # Window styling
-    "$windowOpacity" = "0.95";
-    "$windowRounding" = "10";
+    "$windowOpacity" = "1";
+    "$windowRounding" = "0";
 
-    "$windowBorderSize" = "3";
+    "$windowBorderSize" = "1";
     "$activeWindowBorderColour" = "rgba($primarye6)";
     "$inactiveWindowBorderColour" = "rgba($onSurfaceVariant11)";
 

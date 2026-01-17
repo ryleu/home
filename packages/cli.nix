@@ -28,6 +28,7 @@
     aria2
     tmux
     packwiz
+    blahaj
   ];
 
   programs = {

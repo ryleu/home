@@ -3,6 +3,6 @@
   imports = [
     ./hyprland
     ./images
-    ./caelestia.nix
+    ./waybar
   ];
 }
