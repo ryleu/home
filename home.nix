@@ -1,6 +1,10 @@
 { pkgs, lib, ... }:
 
 {
+  imports = [
+    ./zsh
+  ];
+
   home = {
     username = "ryleu";
     homeDirectory = "/home/ryleu";
@@ -47,48 +51,6 @@
     delta = {
       enable = true;
       enableGitIntegration = true;
-    };
-
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      enableVteIntegration = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      history = {
-        ignoreAllDups = true;
-        share = true;
-      };
-      shellAliases = {
-        la = "ls -alF";
-	":q" = "exit";
-      };
-      plugins = [
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.8.0";
-            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
-          };
-        }
-      ];
-      initContent = lib.mkAfter ''
-        [[ "$TERM" = "xterm-kitty" ]] && cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
-
-	function restart-hyprlock {
-	    if [[ ! -z $1 ]]; then
-	        inst=$1
-	    else
-	        inst=0
-	    fi
-
-            hyprctl --instance $inst 'keyword misc:allow_session_lock_restore 1'
-	    hyprctl --instance $inst 'dispatch exec hyprlock'
-	}
-      '';
     };
 
     eza = {
