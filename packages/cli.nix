@@ -29,6 +29,7 @@
     tmux
     packwiz
     blahaj
+    whipper
   ];
 
   programs = {

@@ -37,6 +37,7 @@
       bottles
       netbeans
       element-desktop
+      picard
     ];
   };
 
