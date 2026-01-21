@@ -1,5 +1,14 @@
+# vim: set ft=zsh :
 
-[[ "$TERM" = "xterm-kitty" ]] && cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
+# load environment variables
+## notes dir
+if [[ -z $RY_NOTES_DIR ]]; then
+	export RY_NOTES_DIR="$HOME/Documents/Notes"
+fi
+## todo path
+if [[ -z $RY_TODO_PATH ]]; then
+	export RY_TODO_PATH="$HOME/Documents/todo.md"
+fi
 
 function restart-hyprlock {
 	if [[ ! -z $1 ]]; then
@@ -12,22 +21,22 @@ function restart-hyprlock {
 	hyprctl --instance $inst 'dispatch exec hyprlock'
 }
 
-alias todo="vim $HOME/Documents/todo.md"
+alias todo="vim $RY_TODO_PATH"
 function note {
-        mkdir -p ~/Documents/Notes/
-        filename="Note $(date -I)"
-        file="$HOME/Documents/Notes/$filename.md"
+        mkdir -p "$RY_NOTES_DIR"
+        header="Note $(date -I)"
+        file="$RY_NOTES_DIR/$header.md"
         if [[ ! -f "$file" ]]; then
-                vim "$file" +"0read !echo \"\# $filename\""
+                vim "$file" +"0read !echo \"\# $header\""
 	else
 		vim "$file"
 	fi
         
 }
 function notes {
-        vim "$HOME/Documents/Notes/"
+        vim "$RY_NOTES_DIR"
 }
 function rmnote {
-        rm -i "$HOME/Documents/Notes/Note $(date -I).md"
+        rm -i "$RY_NOTES_DIR/Note $(date -I).md"
 }
 
