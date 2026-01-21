@@ -138,9 +138,7 @@
           "$mainMod, V, togglefloating,"
           "$mainMod, M, fullscreen, 1"
           "$mainMod, F, fullscreen, 0"
-          "$mainMod, P, pseudo," # dwindle
-          "$mainMod, J, togglesplit," # dwindle
-          "$mainMod SHIFT, L, global, caelestia:lock"
+          "$mainMod SHIFT, L, exec, ${pkgs.hyprlock}/bin/hyprlock --immediate"
           "$mainMod, T, exec, $touchpadScript" # Add this line
 
           # Move focus with mainMod + H J K L
