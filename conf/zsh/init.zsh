@@ -23,9 +23,9 @@ function restart-hyprlock {
 
 alias todo="vim $RY_TODO_PATH"
 function note {
-        mkdir -p "$RY_NOTES_DIR"
-        header="Note $(date -I)"
-        file="$RY_NOTES_DIR/$header.md"
+	mkdir -p "$RY_NOTES_DIR"
+	header="Note $(date -I)"
+	file="$RY_NOTES_DIR/$header.md"
 
 	if [[ ! -f "$file" ]]
 	then
@@ -36,10 +36,10 @@ function note {
 }
 
 function notes {
-        vim "$RY_NOTES_DIR"
+	vim "$RY_NOTES_DIR"
 }
 
 function rmnote {
-        rm -i "$RY_NOTES_DIR/Note $(date -I).md"
+	rm -i "$RY_NOTES_DIR/Note $(date -I).md"
 }
 
