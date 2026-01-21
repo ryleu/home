@@ -12,10 +12,6 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
@@ -24,7 +20,6 @@
       nixpkgs-unstable,
       zen-browser,
       home-manager,
-      caelestia-shell,
       ...
     }:
     let
@@ -48,8 +43,6 @@
               inherit config;
             }
           );
-
-          caelestia = caelestia-shell;
         };
 
       amd64 = pkgsFor "x86_64-linux";
@@ -98,7 +91,6 @@
             };
 
             unstable_pkgs = pkgs.unstable;
-            caelestia = pkgs.caelestia;
             zen_browser = zen-browser;
           };
           inherit modules;
