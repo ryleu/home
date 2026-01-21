@@ -15,11 +15,17 @@ function restart-hyprlock {
 alias todo="vim $HOME/Documents/todo.md"
 function note {
         mkdir -p ~/Documents/Notes/
-        vim "$HOME/Documents/Notes/Note $(date -I).md"
+        filename="Note $(date -I)"
+        file="$HOME/Documents/Notes/$filename.md"
+        if [[ ! -f "$file" ]]; then
+                echo "# $filename\n" > $file
+        fi
+        vim "$file"
 }
 function notes {
-        vim $HOME/Documents/Notes/
+        vim "$HOME/Documents/Notes/"
 }
 function rmnote {
         rm -i "$HOME/Documents/Notes/Note $(date -I).md"
 }
+
