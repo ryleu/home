@@ -18,9 +18,11 @@ function note {
         filename="Note $(date -I)"
         file="$HOME/Documents/Notes/$filename.md"
         if [[ ! -f "$file" ]]; then
-                echo "# $filename\n" > $file
-        fi
-        vim "$file"
+                vim "$file" +"0read !echo \"\# $filename\""
+	else
+		vim "$file"
+	fi
+        
 }
 function notes {
         vim "$HOME/Documents/Notes/"

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, lib, ... }:
 {
   programs = {
     zsh = {
@@ -13,7 +13,7 @@
       };
       shellAliases = {
         la = "ls -alF";
-	":q" = "exit";
+        ":q" = "exit";
       };
       plugins = [
         {
@@ -27,7 +27,7 @@
           };
         }
       ];
-      initContent = lib.mkAfter builtins.readFile ./init.zsh;
+      initContent = lib.mkAfter (builtins.readFile ./init.zsh);
     };
   };
 }

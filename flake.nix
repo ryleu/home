@@ -108,7 +108,6 @@
         ./home.nix
         ./conf/ssh.nix
         ./conf/nvim.nix
-        ./conf
         ./packages/cli.nix
       ];
       guiModules = baseModules ++ [

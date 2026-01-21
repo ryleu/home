@@ -1,8 +1,8 @@
-{ pkgs, lib, ... }:
+{ ... }:
 
 {
   imports = [
-    ./zsh
+    ./conf
   ];
 
   home = {
