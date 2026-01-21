@@ -26,16 +26,19 @@ function note {
         mkdir -p "$RY_NOTES_DIR"
         header="Note $(date -I)"
         file="$RY_NOTES_DIR/$header.md"
-        if [[ ! -f "$file" ]]; then
-                vim "$file" +"0read !echo \"\# $header\""
+
+	if [[ ! -f "$file" ]]
+	then
+		vim "$file" +"0read !echo \"\# $header\""
 	else
 		vim "$file"
 	fi
-        
 }
+
 function notes {
         vim "$RY_NOTES_DIR"
 }
+
 function rmnote {
         rm -i "$RY_NOTES_DIR/Note $(date -I).md"
 }
