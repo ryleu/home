@@ -134,13 +134,13 @@
         };
 
         clock = {
-          format = "{:%I:%M %p}";
+          format = "{:%H:%M}";
 
           # was commented out in JSON:
           # format-alt = "{:%m-%d-%Y}";
 
           tooltip = true;
-          tooltip-format = "{:%m-%d-%Y}";
+          tooltip-format = "{:%Y-%m-%d}";
 
           # was commented out in JSON:
           # on-click-right = "gsimplecal";
