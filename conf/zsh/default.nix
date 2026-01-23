@@ -11,6 +11,7 @@
         ignoreAllDups = true;
         share = true;
       };
+      historySubstringSearch.enable = true;
       shellAliases = {
         la = "ls -alF";
         ":q" = "exit";
