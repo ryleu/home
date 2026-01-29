@@ -156,7 +156,7 @@
 
           # screenshot
           "     , PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -z -m output -m active --clipboard-only"
-          "SHIFT, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -z -m region --clipboard-only"
+          "SHIFT, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
           "CTRL , PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -z -m window --clipboard-only"
         ]
         ++ genKeybinds 1; # call the function to generate keybinds for workspaces 1 -> 10
