@@ -4,6 +4,7 @@
   home = {
     packages = with pkgs; [
       r2modman
+      qdirstat
       unstable_pkgs.dolphin-emu
       calibre
       signal-desktop
