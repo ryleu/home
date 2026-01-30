@@ -23,7 +23,7 @@
     ffmpeg-full
     wl-clipboard
     fastfetch
-    htop
+    btop
     eza
     aria2
     tmux
