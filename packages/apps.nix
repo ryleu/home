@@ -3,9 +3,7 @@
 {
   home = {
     packages = with pkgs; [
-      r2modman
       qdirstat
-      unstable_pkgs.dolphin-emu
       calibre
       signal-desktop
       qbittorrent
@@ -28,15 +26,14 @@
       ]))
       hugin
       qgis
-      zotero
       logseq
       gabutdm
       prusa-slicer
+      orca-slicer
       bambu-studio
       pavucontrol
       openscad
       bottles
-      netbeans
       element-desktop
       picard
     ];
@@ -69,7 +66,6 @@
       shellIntegration = {
         enableZshIntegration = true;
       };
-      # themeFile = "gruvbox-dark";
     };
   };
 }
