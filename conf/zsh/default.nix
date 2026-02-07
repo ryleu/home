@@ -29,6 +29,9 @@
         }
       ];
       initContent = lib.mkAfter (builtins.readFile ./init.zsh);
+      completionInit = ''
+        zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+      '';
     };
   };
 }
