@@ -8,6 +8,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +25,7 @@
       zen-browser,
       home-manager,
       ...
-    }:
+    }@inputs:
     let
       # Helper to generate package sets for a given system.
       pkgsFor =
@@ -91,7 +95,7 @@
             };
 
             unstable_pkgs = pkgs.unstable;
-            zen_browser = zen-browser;
+	    inherit inputs;
           };
           inherit modules;
         };

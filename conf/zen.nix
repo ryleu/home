@@ -1,12 +1,21 @@
 {
-  zen_browser,
+  inputs,
   pkgs,
   ...
 }:
 
 {
+  nixpkgs = {
+    overlays = [
+      inputs.firefox-addons.overlays.default
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   imports = [
-    zen_browser.homeModules.twilight
+    inputs.zen-browser.homeModules.twilight
   ];
 
   programs.zen-browser =
@@ -49,27 +58,6 @@
           PreventInstalls = true;
         };
 
-        ExtensionSettings = {
-          "uBlock0@raymondhill.net" = {
-            # ublock
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-            installation_mode = "force_installed";
-          };
-          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-            # bitwarden
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
-            installation_mode = "force_installed";
-          };
-          "admin@2fas.com" = {
-            # 2fas
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/2fas-two-factor-authentication/latest.xpi";
-            installation_mode = "force_installed";
-          };
-          "tasksforcanvas@jtchengdev.com" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tasks-for-canvas/latest.xpi";
-            installation_mode = "force_installed";
-          };
-        };
         Preferences = mkLockedAttrs {
           "browser.tabs.warnOnClose" = false;
           "middlemouse.paste" = false;
@@ -80,6 +68,22 @@
             Default = "block-audio-video";
           };
         };
+      };
+
+      profiles.default = {
+        mods = [
+          "1b88a6d1-d931-45e8-b6c3-bfdca2c7e9d6" # Remove Tab X
+          "c01d3e22-1cee-45c1-a25e-53c0f180eea8" # Ghost Tabs
+          "4ab93b88-151c-451b-a1b7-a1e0e28fa7f8" # No Sidebar Scrollbar
+        ];
+
+        extensions.packages = with pkgs.firefox-addons; [
+          bitwarden
+          tasks-for-canvas
+          ublock-origin
+	  sponsorblock
+	  youtube-recommended-videos
+        ];
       };
     };
 }
