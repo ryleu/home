@@ -3,6 +3,13 @@
   cursor,
   ...
 }:
+let
+  wpctl = "${pkgs.hyprshot}/bin/hyprshot";
+  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+  rofi = "${pkgs.rofi}/bin/rofi";
+  hyprshot = "${pkgs.hyprshot}/bin/hyprshot";
+  playerctl = "${pkgs.playerctl}/bin/playerctl";
+in
 {
   imports = [
     #./colors.nix
@@ -152,12 +159,12 @@
           "$mainMod, mouse_up, workspace, e-1"
 
           # app runner
-          "$mainMod, R, exec, ${pkgs.rofi}/bin/rofi -show drun"
+          "$mainMod, R, exec, ${rofi} -show drun"
 
           # screenshot
-          "     , PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -z -m output -m active --clipboard-only"
-          "SHIFT, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
-          "CTRL , PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -z -m window --clipboard-only"
+          "     , PRINT, exec, ${hyprshot} -z -m output -m active --clipboard-only"
+          "SHIFT, PRINT, exec, ${hyprshot} -m region --clipboard-only"
+          "CTRL , PRINT, exec, ${hyprshot} -z -m window --clipboard-only"
         ]
         ++ genKeybinds 1; # call the function to generate keybinds for workspaces 1 -> 10
 
@@ -168,20 +175,19 @@
 
       # Laptop multimedia keys for volume and LCD brightness
       bindel = [
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+        ",XF86AudioRaiseVolume, exec, ${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+        ",XF86AudioLowerVolume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ",XF86AudioMicMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ",XF86MonBrightnessUp, exec, ${brightnessctl} s 10%+"
+        ",XF86MonBrightnessDown, exec, ${brightnessctl} s 10%-"
       ];
 
-      # Requires playerctl
       bindl = [
-        ",XF86AudioNext, exec, playerctl next"
-        ",XF86AudioPause, exec, playerctl play-pause"
-        ",XF86AudioPlay, exec, playerctl play-pause"
-        ",XF86AudioPrev, exec, playerctl previous"
+        ",XF86AudioNext, exec, ${playerctl} next"
+        ",XF86AudioPause, exec, ${playerctl} play-pause"
+        ",XF86AudioPlay, exec, ${playerctl} play-pause"
+        ",XF86AudioPrev, exec, ${playerctl} previous"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
