@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +23,7 @@
     {
       nixpkgs,
       nixpkgs-unstable,
+      nixpkgs-master,
       zen-browser,
       home-manager,
       ...
@@ -47,6 +49,13 @@
               inherit config;
             }
           );
+
+	  master = (
+	    import nixpkgs-master {
+              inherit system;
+	      inherit config;
+	    }
+	  );
         };
 
       amd64 = pkgsFor "x86_64-linux";
@@ -95,6 +104,7 @@
             };
 
             unstable_pkgs = pkgs.unstable;
+	    master_pkgs = pkgs.master;
 	    inherit inputs;
           };
           inherit modules;

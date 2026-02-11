@@ -1,4 +1,4 @@
-{ pkgs, font, unstable_pkgs, ... }:
+{ pkgs, font, unstable_pkgs, master_pkgs, ... }:
 
 {
   home = {
@@ -36,6 +36,7 @@
       bottles
       element-desktop
       picard
+      master_pkgs.stoat-desktop
     ];
   };
 
