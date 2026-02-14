@@ -204,4 +204,9 @@ in
       ];
     }; # end settings
   }; # end wayland.windowManager.hyprland
+
+  programs.rofi = {
+    enable = true;
+    theme = "gruvbox-dark-soft";
+  };
 }
