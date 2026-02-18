@@ -117,23 +117,21 @@ in
       # See https://wiki.hyprland.org/Configuring/Binds/ for more
       bind =
         let
+	  mod = a: b: a - (b * (a / b));
           genKeybinds =
             n: # n will go 1 -> 10
             if n > 10 then
               [ ]
             else
-              let
-                # for each of those 1 -> 10 we need to figure out the corresponding workspace and key
-                workspace = toString n;
-                # the workspace is just toString n, but we need key 0 to map to workspace 10
-                key = if workspace == "10" then "0" else workspace;
-              in
               [
                 # now for the actual keybinds
                 # Switch workspaces with mainMod + [0-9]
-                "$mainMod, ${key}, workspace, ${workspace}"
+                "$mainMod, ${toString (mod n 10)}, workspace, ${toString n}"
                 # Move active window to a workspace with mainMod + SHIFT + [0-9]
-                "$mainMod SHIFT, ${key}, movetoworkspacesilent, ${workspace}"
+                "$mainMod SHIFT, ${toString (mod n 10)}, movetoworkspacesilent, ${toString n}"
+		# The same, but add ALT for +10
+                "$mainMod ALT, ${toString (mod n 10)}, workspace, ${toString (n + 10)}"
+                "$mainMod ALT SHIFT, ${toString (mod n 10)}, movetoworkspacesilent, ${toString (n + 10)}"
               ]
               ++ genKeybinds (n + 1); # and finally the recursion where we concat the next number up
         in

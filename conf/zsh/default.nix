@@ -15,6 +15,7 @@
       shellAliases = {
         la = "ls -alF";
         ":q" = "exit";
+	icat = "kitty +kitten icat";
       };
       plugins = [
         {
