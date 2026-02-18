@@ -138,12 +138,14 @@ in
         [
           "$mainMod, RETURN, exec, $terminal"
           "$mainMod, C, killactive,"
-          "$mainMod SHIFT, M, exit,"
+	  "$mainMod, S, toggleSpecialWorkspace, magic"
+	  "$mainMod SHIFT, S, movetoworkspace, special:magic"
+          "$mainMod SHIFT, ESCAPE, exit,"
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating,"
           "$mainMod, M, fullscreen, 1"
           "$mainMod, F, fullscreen, 0"
-          "$mainMod SHIFT, L, exec, ${pkgs.hyprlock}/bin/hyprlock --immediate"
+          "$mainMod, ESCAPE, exec, ${pkgs.hyprlock}/bin/hyprlock --immediate"
           "$mainMod, T, exec, $touchpadScript" # Add this line
 
           # Move focus with mainMod + H J K L
