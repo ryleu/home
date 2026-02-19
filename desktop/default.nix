@@ -5,5 +5,6 @@
     ./images
     ./waybar
     ./cursor.nix
+    ./icons.nix
   ];
 }
