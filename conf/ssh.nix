@@ -84,6 +84,14 @@
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
+
+      "remotebuild" = {
+        hostname = "remotebuild.ryleu.me";
+	user = "nixremote";
+	identityFile = "~/.ssh/id_ed25519";
+	identitiesOnly = true;
+	port = 2222;
+      };
     };
   };
 }

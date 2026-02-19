@@ -1,6 +1,5 @@
 {
   pkgs,
-  cursor,
   ...
 }:
 let
@@ -37,7 +36,6 @@ in
       # Autostart necessary processes (like notifications daemons, status bars, etc.)
       exec-once = [
         "systemctl --user restart hyprpolkitagent.service"
-        "hyprctl setcursor '${cursor.name}' ${builtins.toString cursor.size}"
       ];
 
       general = {
@@ -54,8 +52,6 @@ in
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
 
       env = [
-        "XCURSOR_SIZE,${builtins.toString cursor.size}"
-        "HYPRCURSOR_SIZE,${builtins.toString cursor.size}"
 	"ELECTRON_OZONE_PLATFORM_HINT,wayland"
       ];
 

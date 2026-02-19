@@ -46,3 +46,5 @@ function rmnote {
 # keybinds for zsh history substring search
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+[[ "$TERM" = "xterm-kitty" ]] && alias ssh="kitten ssh"

@@ -44,8 +44,6 @@
 
     # Misc
     "$volumeStep" = "10  # In percent";
-    "$cursorTheme" = "sweet-cursors";
-    "$cursorSize" = "24";
 
     ### Keybinds ###
     # Workspaces

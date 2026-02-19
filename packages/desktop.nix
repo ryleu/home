@@ -1,7 +1,6 @@
 {
   pkgs,
   font,
-  cursor,
   ...
 }:
 
@@ -20,14 +19,6 @@
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gnome
     ];
-
-    pointerCursor = with cursor; {
-      inherit name;
-      inherit package;
-      inherit size;
-      gtk.enable = true;
-      x11.enable = true;
-    };
   };
 
   dconf.settings = {

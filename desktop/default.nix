@@ -4,5 +4,6 @@
     ./hyprland
     ./images
     ./waybar
+    ./cursor.nix
   ];
 }

@@ -97,11 +97,6 @@
               };
               fallback = "Unifont";
             };
-            cursor = {
-              name = "phinger-cursors-light";
-              package = pkgs.pkgs.phinger-cursors;
-              size = 24;
-            };
 
             unstable_pkgs = pkgs.unstable;
 	    master_pkgs = pkgs.master;
