@@ -1,15 +1,10 @@
 { pkgs, ... }:
 let
   name = "Bibata-Modern-Ice";
-  package = pkgs.bibata-cursors; 
+  package = pkgs.bibata-cursors;
   size = 32;
 in
 {
-  home.sessionVariables = {
-    XCURSOR_SIZE = size;
-    HYPRCURSOR_SIZE = size;
-  };
-
   home.pointerCursor = {
     enable = true;
     inherit package;
